@@ -7,20 +7,20 @@
  */
 class Backand {
     
-    private function authenticate($auth_token, $auth_qpp, $configData) {
+    private function authenticate($auth_token, $auth_app, $configData) {
         
         //got to check the token in Backand with $auth_token and get subscription id
-        $subObj = $this->getSubfromBackand($auth_token, $auth_qpp, $configData);
+        $subObj = $this->getSubfromBackand($auth_token, $auth_app, $configData);
         
         if(!isset($subObj->subscriptionId)){
             //clear cookies
             $this->setSubscriptionId('');
             
             unset($_COOKIE['cb_portal_session_id']);
-            setcookie('cb_portal_session_id', '', time() - 3600, '/'); // empty value and old timestamp
+            setcookie('cb_portal_session_id', '', time() - 300 * 60, '/'); // empty value and old timestamp
             
             unset($_COOKIE['cb_subscription_id']);
-            setcookie('cb_subscription_id', '', time() - 3600, '/'); // empty value and old timestamp
+            setcookie('cb_subscription_id', '', time() - 300 * 60, '/'); // empty value and old timestamp
             
             throw new Exception("Can't access backand");
             
@@ -32,12 +32,13 @@ class Backand {
                 
         setcookie('cb_portal_session_id', 
             $auth_token, 
-            time() + 60 *60, 
+            time() + 300 * 60, 
             $configData['COOKIE_PATH'], 
             $configData['COOKIE_DOMAIN'], 
             $configData['COOKIE_SECURE'], 
             $configData['COOKIE_HTTPONLY']
         );
+
     }
     
     public function setSubscriptionId($subscriptionId){
@@ -51,7 +52,7 @@ class Backand {
     private function setSubscriptionCookie($configData){        
         setcookie('cb_subscription_id', 
             $this->subscriptionId, 
-            time() + 60 *60, 
+            time() + 300 * 60, 
             $configData['COOKIE_PATH'], 
             $configData['COOKIE_DOMAIN'], 
             $configData['COOKIE_SECURE'], 
@@ -97,6 +98,29 @@ class Backand {
         
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $configData["BACKAND_URL"] . '/1/general/billingSubscriptionId');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, 
+            array(
+                'Accept: application/json', 
+                'Content-Type: application/json',
+                'Authorization: bearer ' . $access_token,
+                'AppName: ' . $app_name
+            )
+        );
+
+        $server_output = curl_exec ($ch);
+        curl_close ($ch);
+        return json_decode($server_output);
+            
+    }
+    
+    public function GetData($url, $app_name, $configData){
+        
+        $access_token = $_COOKIE['cb_portal_session_id'];
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $configData["BACKAND_URL"] . $url);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
         curl_setopt($ch, CURLOPT_HTTPHEADER, 
