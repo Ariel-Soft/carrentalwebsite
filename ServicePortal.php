@@ -95,8 +95,8 @@ class ServicePortal {
         
         try {
             
-            //get addons
-            $objAddon = Backand::GetData("/1/general/GetAppCurrentAddOns?date=".date("Y-m-d H:i:s"),$this->getAppName(),$configData);
+            //get addons .date("Y-m-d H:i:s")
+            $objAddon = Backand::GetData("/1/general/GetAppCurrentAddOns?date=".urlencode(gmdate("Y-m-d H:i:s")),$this->getAppName(),$configData);
             $i=0;
             $addonds = [];
             foreach($objAddon->overage as $addon){
