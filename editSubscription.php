@@ -194,10 +194,10 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                 <div class="cb-product-title">
                                     Selected Plan
                                 </div>
-                                <div class="cb-product-list">
+                                <div class="cb-product-list" id="selectedLineItems">
                                     <div class="row cb-product-item">
-                                        <div class="col-xs-8" id="selectedPlanReview">Basic (£9.00 x 1)</div>
-                                        <div class="col-xs-4 text-right" id="selectedPlanAmount"><strong>£9.00</strong></div>
+                                        <div class="col-xs-8" id="selectedPlanReview"></div>
+                                        <div class="col-xs-4 text-right" id="selectedPlanAmount"><strong></strong></div>
                                     </div>
                                 </div>
                                 <div class="cb-product-title" id="ifAddonSelected" style="display: none;">
@@ -211,7 +211,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                         <div class="row cb-product-item cb-product-grand-total">
                                             <div class="col-xs-8 col-sm-9">Total
                                             </div>
-                                            <div class="col-xs-4 col-sm-3 text-right" data-cb="grand-total" id="grand-total" ><strong>214.00</strong></div>
+                                            <div class="col-xs-4 col-sm-3 text-right" data-cb="grand-total" id="grand-total" ><strong></strong></div>
                                         </div>
                                     </div>
                                 </div>
@@ -294,7 +294,12 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         $("#cb-handle-progress .alert-danger").show();
         $("#cb-handle-progress .alert-danger .message").html("Payment method is missing: Before choosing a plan you must <a onclick='goToPayment(); return false;'>add a payment method</a>");
         <?php } ?>
-        disableButtons();    
+        disableButtons();
+        
+        //init UI
+        $("#selectedLineItems").html('');
+        $("#grand-total").html('');
+        $("#subscriptionMessage").html('');
     });
     function goToPayment() {
         window.location.href = "<?php echo getEditUrl("editCard.php", $configData) . "?loc=1" ?>";
@@ -352,7 +357,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
             });
         }
     }
-	
+    
     function saveAddon(withAddons) {
         addonIdList = [];
         addonQuantityList = [];
@@ -367,70 +372,110 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         $('#addons, #prev, #next1, #next').hide();
         $('#prev1, #review').show();
         $('#cb-wrapper-ssp').css('min-height', '620px');
-
-        var addonRadioValue = $('input[name=addons]:checked').val();
+        
         var planRadioValue = $('input:radio[name=plan_id]:checked').val();
-        var planPrice = $("span[data-plan-total-price='" + planRadioValue + "']").text();
-        var planActualPrice = $("input[data-plan-price='" + planRadioValue + "']").val();
-        var planQuantity = $("input[data-plan-quantity='" + planRadioValue + "']").val();
-
-        var addonActualPrice = $("span[data-addon-total-price='" +addonRadioValue+"']").val();
-        var addonQuantity = $("input[data-addon-quantity='" + addonRadioValue +"']").val();
-
-        var submessge = $("#submessge").val();
-
-        if (planActualPrice === '0.00') {
-            var planReplaceHtml = toTitleCase(planRadioValue);
-        } else {
-            if (typeof planQuantity === 'undefined') {
-                var planReplaceHtml = toTitleCase(planRadioValue) + ' / ' + 'Month ' + '(' + planActualPrice + ')';
-            } else {
-                var planReplaceHtml = toTitleCase(planRadioValue) + ' / ' + 'Month ' + '(' + currencyValue + ' ' + planActualPrice + ' x ' + planQuantity + ')';
-            }
-        }
-        var finalTotal = planPrice;
-        if (addonRadioValue) {
-            var addonName = '';
-            var addonReplaceHtml = '';
-            var emptytext = '';
-            var addonPricetot = 0;
-            var container = $("#selectedAddon");
-            $('#selectedAddon').html(emptytext);
-            $('#selectedAddonAmount').html(emptytext);
-            $("input[name=addons]:checked").each(function () {
-                var addonRadioValue = $(this).val();
-                var addonProductPrice = $("input[data-addon-price='" + addonRadioValue + "']").val();
-                var addonQty = $("input[data-addon-quantity='" + addonRadioValue +"']").val();
-                var addonName = $("input[data-addon-name='" + addonRadioValue +"']").val();
-                addonIdList.push(addonRadioValue);
-                addonQuantityList.push(addonQty);
-                if (typeof addonQty === 'undefined') {
-                    addonReplaceHtml = addonName + ' - ' + '(' + currencyValue + ' ' + addonProductPrice + '  )';
-                } else {
-                    addonReplaceHtml = addonName + ' - ' + '(' + currencyValue + ' ' + addonProductPrice + ' x ' + addonQty + '  )';
-                }
-				var addonPrice = (addonProductPrice * (addonQty == null ? 1 : addonQty));
-                container.append('<div class="row cb-product-item"> <div class="col-xs-8">'+addonReplaceHtml+'</div> <div class="col-xs-4 text-right">'+ currencyValue + ' ' + addonPrice.toFixed(2) + '</div></div>');
-				addonPricetot += addonPrice;
-            });
-            $('#ifAddonSelected').show();
-            $('#selectedPlanReview').html(planReplaceHtml);
-            $('#selectedPlanAmount').html(planPrice);
-            var planSplit = planPrice.split(" ");
-            var grandTotal = ((planActualPrice * (planQuantity == null ? 1 : planQuantity)) + addonPricetot).toFixed(2);
-            var finalTotal = currencyValue.concat(" ").concat(grandTotal);
-            finalsubmessage = submessge + finalTotal + '.';
-            $("#grand-total, #grandTotal-body").html(finalTotal);
-            $("#subscriptionMessage").html(finalsubmessage);
-        }
-        if (planRadioValue) {
-            $('#selectedPlanReview').html(planReplaceHtml);
-            $('#selectedPlanAmount').html(planPrice);
-            $("#grand-total, #grandTotal-body").html(finalTotal);
-            finalsubmessage = submessge + finalTotal + '.';
-            $("#subscriptionMessage").html(finalsubmessage);
-        }
+ 
+        var params = {action : "retrieveNewEstimate", planId: planRadioValue};
+        AjaxCall('api.php', 'POST', 'json', $.param(params), saveEstimate);
     }
+    
+    function saveEstimate(result){
+        
+        var lineItems = '';
+        result.data.lines.forEach(function(line){
+            lineItems += '<div class="row cb-product-item">';
+            lineItems += '<div class="col-xs-8" id="selectedPlanReview">' + line.description + '</div>';
+            lineItems += '<div class="col-xs-4 text-right" id="selectedPlanAmount"><strong>$' + line.amount + '</strong></div>';
+            lineItems += '</div>';
+        })
+        
+        $("#selectedLineItems").html(lineItems);
+        $("#grand-total").html("$" + result.data.total);
+        
+        var submessge = $("#submessge").val();
+        var finalsubmessage = submessge + result.data.total + '.';
+        $("#subscriptionMessage").html(finalsubmessage);
+    }
+    	
+//    function saveAddon1(withAddons) {
+//        addonIdList = [];
+//        addonQuantityList = [];
+//        if (!withAddons) {
+//            $('#step-plan').toggleClass('cb-product-step current cb-product-step past');
+//            $('#step-review').toggleClass('cb-product-step future cb-product-step current');
+//            $('#changeYourPlan, #next').hide();
+//        } else {
+//            $('#step-addon').toggleClass('cb-product-step current cb-product-step past');
+//            $('#step-review').toggleClass('cb-product-step future cb-product-step current');
+//        }
+//        $('#addons, #prev, #next1, #next').hide();
+//        $('#prev1, #review').show();
+//        $('#cb-wrapper-ssp').css('min-height', '620px');
+//
+//        var addonRadioValue = $('input[name=addons]:checked').val();
+//        var planRadioValue = $('input:radio[name=plan_id]:checked').val();
+//        var planPrice = $("span[data-plan-total-price='" + planRadioValue + "']").text();
+//        var planActualPrice = $("input[data-plan-price='" + planRadioValue + "']").val();
+//        var planQuantity = $("input[data-plan-quantity='" + planRadioValue + "']").val();
+//
+//        var addonActualPrice = $("span[data-addon-total-price='" +addonRadioValue+"']").val();
+//        var addonQuantity = $("input[data-addon-quantity='" + addonRadioValue +"']").val();
+//
+//        var submessge = $("#submessge").val();
+//
+//        if (planActualPrice === '0.00') {
+//            var planReplaceHtml = toTitleCase(planRadioValue);
+//        } else {
+//            if (typeof planQuantity === 'undefined') {
+//                var planReplaceHtml = toTitleCase(planRadioValue) + ' / ' + 'Month ' + '(' + planActualPrice + ')';
+//            } else {
+//                var planReplaceHtml = toTitleCase(planRadioValue) + ' / ' + 'Month ' + '(' + currencyValue + ' ' + planActualPrice + ' x ' + planQuantity + ')';
+//            }
+//        }
+//        var planReplaceHtml = "itay test";
+//        var finalTotal = planPrice;
+//        if (addonRadioValue) {
+//            var addonName = '';
+//            var addonReplaceHtml = '';
+//            var emptytext = '';
+//            var addonPricetot = 0;
+//            var container = $("#selectedAddon");
+//            $('#selectedAddon').html(emptytext);
+//            $('#selectedAddonAmount').html(emptytext);
+//            $("input[name=addons]:checked").each(function () {
+//                var addonRadioValue = $(this).val();
+//                var addonProductPrice = $("input[data-addon-price='" + addonRadioValue + "']").val();
+//                var addonQty = $("input[data-addon-quantity='" + addonRadioValue +"']").val();
+//                var addonName = $("input[data-addon-name='" + addonRadioValue +"']").val();
+//                addonIdList.push(addonRadioValue);
+//                addonQuantityList.push(addonQty);
+//                if (typeof addonQty === 'undefined') {
+//                    addonReplaceHtml = addonName + ' - ' + '(' + currencyValue + ' ' + addonProductPrice + '  )';
+//                } else {
+//                    addonReplaceHtml = addonName + ' - ' + '(' + currencyValue + ' ' + addonProductPrice + ' x ' + addonQty + '  )';
+//                }
+//				var addonPrice = (addonProductPrice * (addonQty == null ? 1 : addonQty));
+//                container.append('<div class="row cb-product-item"> <div class="col-xs-8">'+addonReplaceHtml+'</div> <div class="col-xs-4 text-right">'+ currencyValue + ' ' + addonPrice.toFixed(2) + '</div></div>');
+//				addonPricetot += addonPrice;
+//            });
+//            $('#ifAddonSelected').show();
+//            $('#selectedPlanReview').html(planReplaceHtml);
+//            $('#selectedPlanAmount').html(planPrice);
+//            var planSplit = planPrice.split(" ");
+//            var grandTotal = ((planActualPrice * (planQuantity == null ? 1 : planQuantity)) + addonPricetot).toFixed(2);
+//            var finalTotal = currencyValue.concat(" ").concat(grandTotal);
+//            finalsubmessage = submessge + finalTotal + '.';
+//            $("#grand-total, #grandTotal-body").html(finalTotal);
+//            $("#subscriptionMessage").html(finalsubmessage);
+//        }
+////        if (planRadioValue) {
+////            $('#selectedPlanReview').html(planReplaceHtml);
+////            $('#selectedPlanAmount').html(planPrice);
+////            $("#grand-total, #grandTotal-body").html(finalTotal);
+////            finalsubmessage = submessge + finalTotal + '.';
+////            $("#subscriptionMessage").html(finalsubmessage);
+////        }
+//    }
     function backPlan(withAddons) {
         if (withAddons) {
             $('#step-plan').toggleClass('cb-product-step current cb-product-step future');
@@ -447,6 +492,10 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         }
         addonIdList = [];
         addonQuantityList = [];
+        
+        $("#selectedLineItems").html('');
+        $("#grand-total").html('');
+        $("#subscriptionMessage").html('');
     }
 	
     function backAddon() {
