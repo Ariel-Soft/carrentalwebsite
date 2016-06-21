@@ -8,12 +8,25 @@ class ServicePortal {
 
     private $sessionSubscriptionId = null;
     private $subscriptionDetails = null;
-
+    // relly - usage starts
+    private $usageDetails = null;
+    // relly - usage ends
+    
     public function __construct($subscriptionId) {
         $this->sessionSubscriptionId = $subscriptionId;
         $this->subscriptionDetails = $this->retrieveSubscription($this->sessionSubscriptionId);
     }
-
+    
+    // relly - usage starts
+    public function retrieveUsage($backandObj, $configData) {
+        if ($this->usageDetails == null) {
+            $this->usageDetails = Backand::GetData("/1/general/GetAppCurrentUsageAndPlan?date=",$this->getAppName(),$configData);
+            
+        }
+        return $this->usageDetails;
+    }
+    // relly - usage ends
+      
     /*
      * Retrieves subscription information from Chargebee.
      */
@@ -73,6 +86,41 @@ class ServicePortal {
         "planQuantity" => $subscription->planQuantity));
         $estimate = ChargeBee_Estimate::updateSubscription($estimateParams)->estimate();
         return $estimate;
+    }
+    
+/*
+     * Itay: Retrieves estimates for new plan of a subscription from Chargebee.
+     */
+    public function retrieveNewEstimate($params, $configData) {
+        
+        try {
+            
+            //get addons
+            $objAddon = Backand::GetData("/1/general/GetAppCurrentAddOns?date=".date("Y-m-d H:i:s"),$this->getAppName(),$configData);
+            $i=0;
+            $addonds = [];
+            foreach($objAddon->overage as $addon){
+                $addonds[$i++] = ["id" => $addon->addon_id, "quantity" => $addon->addon_quantity];
+            }
+
+            $estimateParams[] = ["subscription" => ["id" => $this->sessionSubscriptionId, "plan_id" => $_POST["planId"]],"addons" => $addonds];
+
+            $estimate = ChargeBee_Estimate::updateSubscription($estimateParams)->estimate();
+
+            foreach ($estimate->lineItems as $line) {
+                $lineItems[] = array("description" => $line->description, "amount" => $line->amount/100);
+            }
+            $json = new stdClass();
+            $json->total = $estimate->subTotal/100;
+            $json->lines = $lineItems;
+            $response["status"] = "success";
+            $response["data"] = $json;
+            return json_encode($response);
+        } catch (ChargeBee_InvalidRequestException $e) {
+            return $this->handleInvalidRequestErrors($e);
+        } catch (Exception $e) {
+            return $this->handleGeneralErrors($e);
+        }
     }
 
     /**
