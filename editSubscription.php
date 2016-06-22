@@ -270,8 +270,67 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         </div>
     </div>
 </div>
+    
+<div>    
+<?php 
+    $usage = $servicePortal->retrieveUsage($configData);
+                                    
+    if (property_exists($usage, "appName")) {
+?>
+    
 <div class="container" >
-    <div class="row col-12">    
+    <div id="cb-wrapper-ssp">
+		<?php include("processing.php") ?>
+        <div id="cb-user-usage">
+            <div class="cb-well">
+                <div class="cb-product">
+                    <div class="cb-product-header">
+                        <div class="cb-product-steps" data-cb="cb-product-steps">
+                            <div class="cb-product-step current" data-cb-step-for="plan" 
+                                accesskey="" data-cb-current-step='current' id="step-plan">
+                                Your Usage / Your Plan
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="plan" id="changeYourPlan">
+                        <div class="row cb-product-item">
+                            <?php
+                                foreach ($usage->usage as $addon) {
+                                    $units = "";
+                                    if ($addon->units != null){
+                                        $units = "(" . $addon->units . ")";
+                                    }
+                                    ?>
+                                    <div class="col-usage col-border col-xs-auto">
+                                        <div class="col-title">
+                                            <?php echo $addon->addon ?>&nbsp;<?php echo $units ?>
+                                        </div>
+                                        <div class="col-body">
+                                            <?php echo $addon->usage ?>&nbsp;/&nbsp;<?php echo $addon->threshold ?>
+                                        </div>
+                                    </div>
+
+                                <?php }
+                            ?>
+                       </div>
+                    </div>
+
+                    <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="addon" style='display:none'></div>
+                    <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="review"></div>
+                </div>
+                <input type="hidden" id="data-cb-req-from" name="data-cb-req-from" value="" />
+                <input type="hidden" id="sub_id" name="sub_id" value="2102635" />
+                <input type="hidden" id="total_selected_addons" name="total_selected_addons" value="" />
+            </div>
+            
+        </div>
+    </div>
+</div>
+    <?php } ?>
+</div>      
+<div class="container" >
+    <div class="row">    
         <img src="assets/images/pricing.png">
     </div>
 </div>    
