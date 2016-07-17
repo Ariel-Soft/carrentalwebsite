@@ -7,17 +7,17 @@ if ($subscription->status == 'non_renewing' && $subscription->currentTermEnd < t
 }
 if ($subscription->status == "future") {
     if(isset($subscription->trialStart)){
-        $trialstartdetails = str_replace('$subscription.trial_start', date('d-M-y', $subscription->trialStart), 											$infoconfigData['Future_Subscriptions']['Future_subscription_info_trial']);
+        $trialstartdetails = str_replace('$subscription.trial_start', date('d-M-y', $subscription->trialStart), $infoconfigData['Future_Subscriptions']['Future_subscription_info_trial']);
         $subscriptionInfoMsg = str_replace('$subscription.trial_end', date('d-M-y', $subscription->trialEnd), $trialstartdetails);
     } else{
-        $subscriptionInfoMsg = str_replace('$subscription.start_date', date('d-M-y', $subscription->startDate), 										$infoconfigData['Future_Subscriptions']['Future_subscription_info_active']);
+        $subscriptionInfoMsg = str_replace('$subscription.start_date', date('d-M-y', $subscription->startDate), $infoconfigData['Future_Subscriptions']['Future_subscription_info_active']);
     } 
 } else if ($subscription->status == "in_trial") {
-	$subscriptionInfoMsg =str_replace('$subscription.trial_end', date('d-M-y', $subscription->trialEnd), 									$infoconfigData['Trial_Subscriptions']['Trial_end_date']);
+	$subscriptionInfoMsg =str_replace('$subscription.trial_end', date('d-M-y', $subscription->trialEnd), $infoconfigData['Trial_Subscriptions']['Trial_end_date']);
 } else if ($subscription->status == "active") {
-	$subscriptionInfoMsg = str_replace('$subscription.current_term_end', date('d-M-y', $subscription->currentTermEnd), 									$infoconfigData['Active_Subscriptions']['Subscription_renewal_info']);
+	$subscriptionInfoMsg = str_replace('$subscription.current_term_end', date('d-M-y', $subscription->currentTermEnd), $infoconfigData['Active_Subscriptions']['Subscription_renewal_info']);
 } else if ($subscription->status == "non_renewing") {
-	$subscriptionInfoMsg = str_replace('$subscription.cancelled_at', date('d-M-y', $subscription->cancelledAt), 									$infoconfigData['Non_Renewing_Subscriptions']['Will_be_canceled']); 
+	$subscriptionInfoMsg = str_replace('$subscription.cancelled_at', date('d-M-y', $subscription->cancelledAt), $infoconfigData['Non_Renewing_Subscriptions']['Will_be_canceled']); 
 } else if ($subscription->status == "cancelled") {
     if($subscription->cancelReason == 'not_paid'){
         $subscriptionInfoMsg =  $infoconfigData['Canceled_Subscriptions']['Canceled_due_to_invoice_not_paid'];

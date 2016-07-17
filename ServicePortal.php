@@ -8,9 +8,6 @@ class ServicePortal {
 
     private $sessionSubscriptionId = null;
     private $subscriptionDetails = null;
-    // relly - usage starts
-    private $usageDetails = null;
-    // relly - usage ends
     
     public function __construct($subscriptionId) {
         $this->sessionSubscriptionId = $subscriptionId;
@@ -18,12 +15,8 @@ class ServicePortal {
     }
     
     // relly - usage starts
-    public function retrieveUsage($backandObj, $configData) {
-        if ($this->usageDetails == null) {
-            $this->usageDetails = Backand::GetData("/1/general/GetAppCurrentUsageAndPlan?date=",$this->getAppName(),$configData);
-            
-        }
-        return $this->usageDetails;
+    public function retrieveUsage($configData) {
+        return Backand::GetData("/1/general/GetAppCurrentUsageAndPlan?date=".urlencode(gmdate("Y-m-d H:i:s")),$this->getAppName(),$configData);
     }
     // relly - usage ends
       
@@ -94,7 +87,7 @@ class ServicePortal {
     public function retrieveNewEstimate($params, $configData) {
         
         try {
-            
+
             //get addons .date("Y-m-d H:i:s")
             $objAddon = Backand::GetData("/1/general/GetAppCurrentAddOns?date=".urlencode(gmdate("Y-m-d H:i:s")),$this->getAppName(),$configData);
             $i=0;
@@ -104,7 +97,7 @@ class ServicePortal {
             }
 
             $estimateParams[] = ["subscription" => ["id" => $this->sessionSubscriptionId, "plan_id" => $_POST["planId"]],"addons" => $addonds];
-
+            
             $estimate = ChargeBee_Estimate::updateSubscription($estimateParams)->estimate();
 
             foreach ($estimate->lineItems as $line) {
@@ -198,7 +191,7 @@ class ServicePortal {
             array(
                 "planId" => $_POST['planId'],
                 "planQuantity" => $_POST['planQuantity'],
-                "endOfTerm" => $params["subscription"]["immediately"],
+                "endOfTerm" => $_POST['endOfTerm'],
                 "replaceAddonList" => true,
                 "addons" => in_array('addons',$_POST) ? $_POST['addons'] : ''
             ));

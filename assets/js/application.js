@@ -9,9 +9,10 @@ jQuery.validator.setDefaults({
 /* 
  * Ajax call used to update the html content. 
  */
-function AjaxCall(url, type, data, selector, spinner) {
+function AjaxCall(url, type, dataType, data, callBack) {
     $.ajax({
         type: type,
+        dataType: dataType,
         url: url,
         data: data,
         contentType: "application/x-www-form-urlencoded;charset=utf-8",
@@ -19,7 +20,26 @@ function AjaxCall(url, type, data, selector, spinner) {
             $(".loader").show();
         },
         success: function (result) {
-            $(selector).html(result);
+            callBack(result);
+        },
+        error: function(response) {
+            console.log(response);
+            var msg = "";
+            try {
+                var error = JSON.parse(response.responseText);
+                if('error_param' in error){
+                        $('span[id="' + error.error_param +'"]').text(error.error_msg);
+                        $('span[id="' + error.error_param +'"]').show();
+                        msg = error.error_msg;
+                } else {
+                    msg = error.error_msg;
+                }
+            }catch(e) {
+                msg = "Sorry, something went wrong while processing your request.";	
+            }
+            $("#cb-handle-progress .alert-danger").show();
+            $("#cb-handle-progress .alert-danger .message").text(msg);
+            $("#cb-handle-progress .alert-danger").fadeOut(8000);
         },
         complete: function() {
             $(".loader").hide();

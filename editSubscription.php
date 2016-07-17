@@ -7,15 +7,17 @@ $allAddons = $servicePortal->retrieveAllAddons();
 $planQuantity = $servicePortal->getSubscription()->planQuantity;
 $planId = $servicePortal->getSubscription()->planId;
 $currentTermEnd = $servicePortal->getSubscription()->currentTermEnd;
+$currentTermStart = min($servicePortal->getSubscription()->currentTermStart, $servicePortal->getSubscription()->metaData['start_date']);
 $havePaymentMethod = isset($servicePortal->getCustomer()->paymentMethod);
 
 $allPlansIndexed = array();
+$excludePlans = array("free-for-environments", "unlimited-for-offline-payment", "backand-internal-use");
 foreach ($allPlans as $plan) {
     if ($plan->plan()->id == $servicePortal->getSubscription()->planId) {
         $planResult = $plan->plan();
     }
-	if($plan->plan()->status == "archived" && $plan->plan()-> id != $servicePortal->getSubscription()->planId){
-		continue;
+        if($plan->plan()->status == "archived" && $plan->plan()-> id != $servicePortal->getSubscription()->planId || in_array($plan->plan()->id, $excludePlans)){
+            continue;
 	}
     $allPlansIndexed[$plan->plan()->id] = $plan->plan();
     if ($settingconfigData["changesubscription"]["groupplan"] == 'false') {
@@ -225,23 +227,23 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                         <div class="media-body" id="subscriptionMessage"> 
                                             <?php
                                             if ($settingconfigData["subscription"]["immediately"] == 'false') {
-                                                $phrase = $infoconfigData['Messages_during_change_subscription']['Change_at_end_of_term'];
-                                                $default = array('$subscription.current_term_end', '$estimated_invoice.amount');
-                                                $assign = array(date('d-M-y', $currentTermEnd), '');
-                                                $subscriptionMessage = str_replace($default, $assign, $phrase);
+//                                                $phrase = $infoconfigData['Messages_during_change_subscription']['Change_at_end_of_term'];
+//                                                $default = array('$subscription.current_term_end', '$subscription.current_term_start');
+//                                                $assign = array(gmdate('d-M-y',$currentTermEnd), gmdate('d-M-y', $currentTermStart));
+//                                                $subscriptionMessage = str_replace($default, $assign, $phrase);
                                                 ?>
                                                 <input type="hidden" value="true" name="end_of_term" id="end_of_term" /> 
 
                                             <?php
                                             } else {
                                                 $phrase = $infoconfigData['Messages_during_change_subscription']['Change_immediately'];
-                                                $default = array('$subscription.current_term_end', '$estimated_invoice.amount');
-                                                $assign = array(date('d-M-y', $currentTermEnd), '');
+                                                $default = array('$subscription.current_term_end', '$subscription.current_term_start');
+                                                $assign = array(gmdate('d-M-y', $currentTermEnd), gmdate('d-M-y', $currentTermStart));
                                                 $subscriptionMessage = str_replace($default, $assign, $phrase);
                                                 ?>
                                                 <input type="hidden" value="false" name="end_of_term" id="end_of_term" />  
-<?php }
-?>
+                                            <?php }
+                                            ?>
                                         </div>
                                         <input type="hidden" value="<?php echo $subscriptionMessage ?>" name="submessge" id="submessge" /> 
                                     </div>
@@ -276,11 +278,14 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
     $usage = $servicePortal->retrieveUsage($configData);
                                     
     if (property_exists($usage, "appName")) {
+        $nextBillingCycleDate = "2016-02-02";
+        if (property_exists($usage->current, "nextBillingCycleDate")) {
+            $nextBillingCycleDate = $usage->current->nextBillingCycleDate;
+        }
 ?>
     
-<div class="container" >
+<div class="container" id="cd-usage">
     <div id="cb-wrapper-ssp">
-		<?php include("processing.php") ?>
         <div id="cb-user-usage">
             <div class="cb-well">
                 <div class="cb-product">
@@ -288,34 +293,76 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                         <div class="cb-product-steps" data-cb="cb-product-steps">
                             <div class="cb-product-step current" data-cb-step-for="plan" 
                                 accesskey="" data-cb-current-step='current' id="step-plan">
-                                Your Usage / Your Plan
+                                <b>Your Usage / Your Plan</b> <br>Next Billing Cycle:&nbsp;<?php echo date('d-M-Y', strtotime($nextBillingCycleDate)) ?>
                             </div>
 
                         </div>
                     </div>
                     <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="plan" id="changeYourPlan">
                         <div class="row cb-product-item">
+                            
+                            <div class="col-usage col-border col-xs-auto">
+                                <div class="col-title">
+                                    Period
+                                </div>
+                                <?php
+                                $currentStartDate = $usage->current->startDate;
+                                $currentEndDate = (string)$usage->current->endDate;
+        
+                                ?>
+                                <div class="col-body" style="box-shadow: 0 1px 0 black;">
+                                    <?php echo date('d-M-Y', strtotime($currentStartDate)) ?>&nbsp;to&nbsp;<?php echo date('d-M-Y', strtotime($currentEndDate)) ?>
+                                </div>
+                                <?php
+                                if (property_exists($usage, "prev")) {
+                                    $prevStartDate = $usage->prev->startDate;
+                                    $prevEndDate = (string)$usage->prev->endDate;
+        
+                                   ?> 
+                                <div class="col-body">
+                                    <?php echo date('d-M-Y', strtotime($prevStartDate)) ?>&nbsp;to&nbsp;<?php echo date('d-M-Y', strtotime($prevEndDate)) ?>
+         
+                                </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                            
                             <?php
-                                foreach ($usage->usage as $addon) {
+                                for($i = 0; $i < count($usage->current->usage); $i++) {
+                                    $currentAddon = $usage->current->usage[$i];
+                                //foreach ($usage->current->usage as $addon) {
                                     $units = "";
-                                    if ($addon->units != null){
-                                        $units = "(" . $addon->units . ")";
+                                    if ($currentAddon->units != null){
+                                        $units = "(" . $currentAddon->units . ")";
                                     }
                                     ?>
                                     <div class="col-usage col-border col-xs-auto">
                                         <div class="col-title">
-                                            <?php echo $addon->addon ?>&nbsp;<?php echo $units ?>
+                                            <?php echo $currentAddon->addon ?>&nbsp;<?php echo $units ?>
                                         </div>
+                                        <div class="col-body" style="box-shadow: 0 1px 0 black;">
+                                            <span style="<?php echo ($currentAddon->usage > $currentAddon->threshold ? 'color:red' : '')?>"><?php echo (is_numeric($currentAddon->usage) ? number_format($currentAddon->usage,$currentAddon->round) : '--') ?></span>&nbsp;/&nbsp;
+                                                <?php echo (is_numeric($currentAddon->threshold) ? number_format($currentAddon->threshold) : '--') ?>
+                                        </div>
+                                        <?php
+                                        if (property_exists($usage, "prev")) {
+                                            $prevAddon = $usage->prev->usage[$i];
+                                           ?> 
                                         <div class="col-body">
-                                            <?php echo $addon->usage ?>&nbsp;/&nbsp;<?php echo $addon->threshold ?>
+                                            <span style="<?php echo ($prevAddon->usage > $prevAddon->threshold ? 'color:red' : '')?>"><?php echo (is_numeric($prevAddon->usage) ? number_format($prevAddon->usage,$prevAddon->round) : '--') ?></span>&nbsp;/&nbsp;
+                                                <?php echo (is_numeric($prevAddon->threshold) ? number_format($prevAddon->threshold) : '--') ?>
                                         </div>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
 
                                 <?php }
                             ?>
                        </div>
                     </div>
-
+                    
                     <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="addon" style='display:none'></div>
                     <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="review"></div>
                 </div>
@@ -330,8 +377,8 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
     <?php } ?>
 </div>      
 <div class="container" >
-    <div class="row">    
-        <img src="assets/images/pricing.png">
+    <div style="">    
+        <img src="assets/images/pricing.png" style="width:100%">
     </div>
 </div>    
 <?php include("footer.php"); ?>
@@ -359,6 +406,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         $("#selectedLineItems").html('');
         $("#grand-total").html('');
         $("#subscriptionMessage").html('');
+        
     });
     function goToPayment() {
         window.location.href = "<?php echo getEditUrl("editCard.php", $configData) . "?loc=1" ?>";
@@ -428,7 +476,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
             $('#step-addon').toggleClass('cb-product-step current cb-product-step past');
             $('#step-review').toggleClass('cb-product-step future cb-product-step current');
         }
-        $('#addons, #prev, #next1, #next').hide();
+        $('#addons, #prev, #next1, #next, #cd-usage').hide();
         $('#prev1, #review').show();
         $('#cb-wrapper-ssp').css('min-height', '620px');
         
@@ -452,8 +500,9 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         $("#grand-total").html("$" + result.data.total);
         
         var submessge = $("#submessge").val();
-        var finalsubmessage = submessge + result.data.total + '.';
+        var finalsubmessage = submessge.replace('$estimated_invoice.amount',currencyValue + result.data.lines[0].amount);
         $("#subscriptionMessage").html(finalsubmessage);
+
     }
     	
 //    function saveAddon1(withAddons) {
@@ -547,7 +596,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
             $('#step-addon').toggleClass('cb-product-step current cb-product-step future');
             $('#step-review').toggleClass('cb-product-step current cb-product-step future');
             $('#addons, #review, #prev, #next1, #next').hide();
-            $('#changeYourPlan, #next').show();
+            $('#changeYourPlan, #next, #cd-usage').show();
         }
         addonIdList = [];
         addonQuantityList = [];
@@ -641,3 +690,21 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         AjaxCallMessage('api.php', 'POST', 'json', $.param(params), 'editsubscription');
     });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

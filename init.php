@@ -1,5 +1,4 @@
 <?php 
-
 $config = __DIR__ . "/config/config.ini";
 $configData = parse_ini_file($config);
 

@@ -115,7 +115,7 @@ class Backand {
             
     }
     
-    public function GetData($url, $app_name, $configData){
+    public static function GetData($url, $app_name, $configData){
         
         $access_token = $_COOKIE['cb_portal_session_id'];
         
