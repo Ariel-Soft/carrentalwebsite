@@ -315,15 +315,17 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                 </div>
                                 <?php
                                 if (property_exists($usage, "prev")) {
-                                    $prevStartDate = $usage->prev->startDate;
-                                    $prevEndDate = (string)$usage->prev->endDate;
-        
-                                   ?> 
-                                <div class="col-body">
-                                    <?php echo date('d-M-Y', strtotime($prevStartDate)) ?>&nbsp;to&nbsp;<?php echo date('d-M-Y', strtotime($prevEndDate)) ?>
-         
-                                </div>
+                                    for($j = 0; $j < count($usage->prev); $j++) {
+                                        $prevStartDate = $usage->prev[$j]->startDate;
+                                        $prevEndDate = (string)$usage->prev[$j]->endDate;
+
+                                       ?> 
+                                    <div class="col-body">
+                                        <?php echo date('d-M-Y', strtotime($prevStartDate)) ?>&nbsp;to&nbsp;<?php echo date('d-M-Y', strtotime($prevEndDate)) ?>
+
+                                    </div>
                                 <?php
+                                    }
                                 }
                                 ?>
                             </div>
@@ -347,13 +349,16 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                         </div>
                                         <?php
                                         if (property_exists($usage, "prev")) {
-                                            $prevAddon = $usage->prev->usage[$i];
-                                           ?> 
-                                        <div class="col-body">
-                                            <span style="<?php echo ($prevAddon->usage > $prevAddon->threshold ? 'color:red' : '')?>"><?php echo (is_numeric($prevAddon->usage) ? number_format($prevAddon->usage,$prevAddon->round) : '--') ?></span>&nbsp;/&nbsp;
-                                                <?php echo (is_numeric($prevAddon->threshold) ? number_format($prevAddon->threshold) : '--') ?>
-                                        </div>
-                                        <?php
+                                            for($j = 0; $j < count($usage->prev); $j++) {
+                                
+                                                $prevAddon = $usage->prev[$j]->usage[$i];
+                                               ?> 
+                                            <div class="col-body">
+                                                <span style="<?php echo ($prevAddon->usage > $prevAddon->threshold ? 'color:red' : '')?>"><?php echo (is_numeric($prevAddon->usage) ? number_format($prevAddon->usage,$prevAddon->round) : '--') ?></span>&nbsp;/&nbsp;
+                                                    <?php echo (is_numeric($prevAddon->threshold) ? number_format($prevAddon->threshold) : '--') ?>
+                                            </div>
+                                            <?php
+                                            }
                                         }
                                         ?>
                                     </div>
