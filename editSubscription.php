@@ -278,7 +278,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
     $usage = $servicePortal->retrieveUsage($configData);
                                     
     if (property_exists($usage, "appName")) {
-        $nextBillingCycleDate = "2016-02-02";
+        $nextBillingCycleDate = "";
         if (property_exists($usage->current, "nextBillingCycleDate")) {
             $nextBillingCycleDate = $usage->current->nextBillingCycleDate;
         }
