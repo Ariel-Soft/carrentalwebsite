@@ -908,6 +908,12 @@ a.text-danger:hover{
         text-align: right;
         padding:5px;
     }
+	.alert.alert-info.billing-info {
+    background: #f6e4e2 none repeat scroll 0 0;
+    color: #f44336;
+    font-size: 15px;
+    font-weight: bold;
+}
     #cb-portal-invoice-table td[data-cb-invoice]:before {
         content: attr(data-cb-invoice);
         float: left;
