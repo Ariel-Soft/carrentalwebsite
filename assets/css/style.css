@@ -293,6 +293,24 @@ a.text-danger:hover{
 #cb-portal-invoice-table{
     margin-top:-10px;
 }
+.page-header span.h3 {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.cb-well .page-header a, .cb-step-nav {
+    font-size: 14px;
+}
+#cb-content .page-header a .glyphicon, #cb-portal-invoice-table .glyphicon {
+    margin: 0 5px;
+}
+.cb-well .page-header a, .cb-step-nav {
+    float: right;
+    margin-top: 7px;
+}	
+.cb-well a {
+    text-decoration: underline;
+}
 
 /*Alert messages*/
 .alert{
@@ -395,10 +413,13 @@ a.text-danger:hover{
     -webkit-border-radius: 5px;
     margin-bottom: 15px;
     padding:15px;
+	width:60% !important;
     background-color:#F5F5F5;
     border: 1px solid #e3e3e3;
 }
-
+#cb-wrapper-ssp h3, #cb-wrapper-ssp .page-header {
+    margin: 0 0 9px;
+}
 .cb-well a{
     text-decoration:underline;
 }
