@@ -44,7 +44,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
     <input id="onePlan" name="onePlan" type="hidden" class="form-control" value="1" > 
 <?php } ?>
 
-<div class="container container container-m-left">
+<div class="container" >
     <div id="cb-wrapper-ssp">
 		<?php include("processing.php") ?>
         <div id="cb-user-content">
