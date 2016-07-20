@@ -387,14 +387,13 @@ a.text-danger:hover{
 }
 
 /*"cb-well" class is used for the purpose of background and border colours as well as spacing. We recommend you to not override the class unless required.*/
-.cb-well{
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    margin-bottom: 15px;
-    padding:15px;
-    background-color:#F5F5F5;
+.cb-well {
+    background-color: #f5f5f5;
     border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
+    width: 60% !important;
 }
 
 .cb-well a{
