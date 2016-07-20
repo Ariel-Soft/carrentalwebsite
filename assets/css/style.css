@@ -275,6 +275,9 @@ a.text-danger:hover{
     border-top-color:#453A59;
     border-bottom-color:#453A59;
 }
+.text-center > .alert {
+    display: inline-block;
+}
 .modal-header {
     padding: 30px 20px;
     border-bottom: 1px solid #ddd;
