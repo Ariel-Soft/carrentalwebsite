@@ -5,7 +5,7 @@ $billingAddress = $customer->billingAddress;
 $subscription = $servicePortal->getSubscription();
 $customerInvoice = $servicePortal->retrieveInvoice();
 ?> 
-<div class="container">
+<div class="container container-m-left">
     <div id="cb-wrapper-ssp">
 
          <?php include("processing.php")  ?>
