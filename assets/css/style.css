@@ -312,7 +312,11 @@ a.text-danger:hover{
     border-color:#79acc1;
     color:#72a2b6;
 }
-
+.scale {
+    color: #555555;
+    float: left;
+    font-size: 15px;
+}
 /*Warning alert message*/
 .alert-warning{
     border-color:#d59e18;
@@ -410,6 +414,16 @@ a.text-danger:hover{
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
+}
+.cb-well .page-header a, .cb-step-nav {
+    font-size: 14px;
+}
+.cb-well .page-header a, .cb-step-nav {
+    float: right;
+    margin-top: 7px;
+}
+.cb-well a {
+    text-decoration: underline;
 }
 /*#cb-handle-progress handles the alert messages as well as the loading shown on top of the page*/
 #cb-handle-progress{

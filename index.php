@@ -188,7 +188,7 @@ $customerInvoice = $servicePortal->retrieveInvoice();
             </div>
             <?php if (count($customerInvoice) <= 0) { ?>
                 <div class="text-center">
-                    <div class="alert alert-info">
+                    <div class="alert alert-info billing-info">
                         <div class="media text-left">
                             <span class="glyphicon glyphicon-info-sign pull-left"></span>
                             <div class="media-body">
