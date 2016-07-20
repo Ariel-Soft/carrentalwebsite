@@ -290,8 +290,15 @@ a.text-danger:hover{
     border-top-left-radius: 5px;
     line-height: 0 !important;
 }
+.history_table table.table {
+    margin-bottom: 0;
+}
 .modal-body br {
     display: none;
+}
+.payment-ok {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
 }
 
 .modal-title {
