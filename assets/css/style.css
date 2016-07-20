@@ -294,7 +294,7 @@ a.text-danger:hover{
 
 /*Alert messages*/
 .alert{
-    background: transparent;
+    background: #e9f3fa none repeat scroll 0 0;
     border-radius:0;
     -moz-border-radius:0;
     -webkit-border-radius:0;
