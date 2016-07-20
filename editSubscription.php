@@ -55,7 +55,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                             <div class="cb-product-steps" data-cb="cb-product-steps">
                                 <div class="cb-product-step current" data-cb-step-for="plan" 
                                     accesskey="" data-cb-current-step='current' id="step-plan">
-                                    Change your plan
+                                    change your plan
                                 </div>
                                 <?php if ( $servicePortal->addonAccessible($allAddons, $settingconfigData )) { ?>
                                     <div class="cb-product-step future" data-cb-step-for="addon" 
