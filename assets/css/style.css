@@ -403,7 +403,14 @@ a.text-danger:hover{
 #cb-wrapper-ssp hr{
     border-style:dashed;
 }
-
+#cb-wrapper-ssp h3, #cb-wrapper-ssp .page-header {
+    margin: 0 0 9px;
+}
+.page-header span.h3 {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
 /*#cb-handle-progress handles the alert messages as well as the loading shown on top of the page*/
 #cb-handle-progress{
     position:relative;
