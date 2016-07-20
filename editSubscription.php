@@ -44,7 +44,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
     <input id="onePlan" name="onePlan" type="hidden" class="form-control" value="1" > 
 <?php } ?>
 
-<div class="container" >
+<div class="container container container-m-left">
     <div id="cb-wrapper-ssp">
 		<?php include("processing.php") ?>
         <div id="cb-user-content">
@@ -55,7 +55,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                             <div class="cb-product-steps" data-cb="cb-product-steps">
                                 <div class="cb-product-step current" data-cb-step-for="plan" 
                                     accesskey="" data-cb-current-step='current' id="step-plan">
-                                    change your plan
+                                    Change your plan
                                 </div>
                                 <?php if ( $servicePortal->addonAccessible($allAddons, $settingconfigData )) { ?>
                                     <div class="cb-product-step future" data-cb-step-for="addon" 
