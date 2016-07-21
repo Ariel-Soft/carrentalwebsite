@@ -34,7 +34,7 @@ if ($subscription->status == "future") {
         <div class="alert alert-info">
             <div class="media text-left">
                 <span class="glyphicon glyphicon-info-sign pull-left"></span>
-                <div class="media-body">
+                <div class="media-body your-billing">
 					<?php echo $subscriptionInfoMsg ?>
                 </div>
             </div>

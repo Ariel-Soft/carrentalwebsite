@@ -436,7 +436,11 @@ a.text-danger:hover{
 .cb-well a{
     text-decoration:underline;
 }
-
+.your-billing {
+    color: #428bcd;
+    font-size: 15px;
+    font-weight: bold;
+}
 #cb-wrapper-ssp hr{
     border-style:dashed;
 }
