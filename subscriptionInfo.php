@@ -40,6 +40,15 @@ if ($subscription->status == "future") {
             </div>
         </div>
 </div>
+<div class="plan-scale">
+<div class="scale">
+ <span>Scale</span>
+</div>
+<div class="price">
+ <span><?php echo $configData['currency_value'] .' '.number_format( $estimate->amount / 100, 2, '.', '')  ?></span>
+</div>
+<hr class="clear">
+</div>
 <?php } ?>
 
 <ul class="list-unstyled cb-subscribed-items">

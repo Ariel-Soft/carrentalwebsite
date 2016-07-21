@@ -436,6 +436,10 @@ a.text-danger:hover{
 .cb-well a{
     text-decoration:underline;
 }
+.price {
+    font-size: 15px;
+    text-align: right;
+}
 .your-billing {
     color: #428bcd;
     font-size: 15px;
@@ -446,6 +450,10 @@ a.text-danger:hover{
 }
 #cb-wrapper-ssp h3, #cb-wrapper-ssp .page-header {
     margin: 0 0 9px;
+}
+.text-muted {
+    color: #555555;
+    line-height: 14px;
 }
 .page-header span.h3 {
     font-size: 18px;
