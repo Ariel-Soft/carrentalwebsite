@@ -806,7 +806,7 @@ a.text-danger:hover{
         margin-left: 8px;
     }
     #cb-handle-progress{
-        min-height: 50px;
+        min-height: 25px;
     }
     .cb-subscription-status{
         top:-4px;
