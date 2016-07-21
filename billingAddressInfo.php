@@ -1,7 +1,7 @@
 <?php if (!isset($customer->billingAddress)) { ?>
     <div class="form-horizontal">
     	<div class="text-center">
-        	<div class="alert alert-info">
+        	<div class="alert alert-info billing-info">
             	<div class="media text-left">
                         <span class="glyphicon glyphicon-info-sign pull-left"></span>
                         <div class="media-body">

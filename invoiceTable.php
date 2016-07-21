@@ -1,4 +1,5 @@
 <?php $count = 0; ?>
+<div class="history_table">
 <table class="table table-hover" id="cb-portal-invoice-table">
     <tbody>
         <tr class="hidden-xs">

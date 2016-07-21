@@ -961,7 +961,17 @@ span.visa-img {
         text-align: right;
         padding:5px;
     }
-	.alert.alert-info.billing-info {
+	.history_table {
+    margin-top: -10px;
+}
+.history_table th {
+    color: #555555;
+    font-weight: normal;
+}
+.history_table table.table {
+    margin-bottom: 0;
+}
+.alert.alert-info.billing-info {
     background: #f6e4e2 none repeat scroll 0 0;
     color: #f44336;
     font-size: 15px;
