@@ -5,7 +5,7 @@
                     <label class="col-xs-5 control-label">First Name
                     </label>
                     <div class="col-xs-7 form-control-static">
-                        <b><?php echo (isset($customer->firstName) ? esc($customer->firstName) : "") ?></b>
+                        <?php echo (isset($customer->firstName) ? esc($customer->firstName) : "") ?>
                     </div>
                 </div>
             </div>
@@ -14,7 +14,7 @@
                         <label class="col-xs-5 control-label">Last Name
                         </label>
                         <div class="col-xs-7 form-control-static">
-                            <b><?php echo (isset($customer->lastName) ? esc($customer->lastName) : "") ?></b>
+                            <?php echo (isset($customer->lastName) ? esc($customer->lastName) : "") ?>
                         </div>
                     </div>
              </div>
@@ -25,7 +25,7 @@
                 <label class="col-xs-5 control-label">Email
                 </label>
                 <div class="col-xs-7 form-control-static">
-                    <b><?php echo esc($customer->email) ?></b>
+                    <?php echo esc($customer->email) ?>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                     <label class="col-xs-5 control-label">Company
                     </label>
                     <div class="col-xs-7 form-control-static">
-                        <b><?php echo (isset($customer->company) ?  esc($customer->company) : "") ?></b>
+                        <?php echo (isset($customer->company) ?  esc($customer->company) : "") ?>
                     </div>
                 </div>
         </div>
@@ -45,7 +45,7 @@
                     <label class="col-xs-5 control-label">Phone
                     </label>
                     <div class="col-xs-7 form-control-static">
-                        <b><?php echo (isset($customer->phone) ? esc($customer->phone) : "") ?></b>
+                        <?php echo (isset($customer->phone) ? esc($customer->phone) : "") ?>
                     </div>
                 </div>
             </div>

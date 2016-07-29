@@ -28,7 +28,7 @@ function AjaxCall(url, type, dataType, data, callBack) {
             try {
                 var error = JSON.parse(response.responseText);
                 if('error_param' in error){
-                        $('span[id="' + error.error_param +'"]').text(JSON.stringify(error));
+                        $('span[id="' + error.error_param +'"]').text(error.error_msg);
                         $('span[id="' + error.error_param +'"]').show();
                         msg = error.error_msg;
                 } else {

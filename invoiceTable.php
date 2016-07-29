@@ -1,4 +1,5 @@
 <?php $count = 0; ?>
+<div class="history_table">
 <table class="table table-hover" id="cb-portal-invoice-table">
     <tbody>
         <tr class="hidden-xs">
@@ -33,13 +34,13 @@
                     <?php } ?>
                 </td>
                 <td data-cb-invoice="Date">
-                    <b><?php echo date('d-M-y', $invoice->paidOn) ?></b>
+                    <?php echo date('d-M-y', $invoice->paidOn) ?>
                 </td>
                 <td data-cb-invoice="Invoice Number">
-                   <b> <?php echo $invoice->id ?></b>
+                    <?php echo $invoice->id ?>
                 </td>
                 <td data-cb-invoice="Amount" class="text-right">
-                   <b> <?php echo $configData['currency_value'] . number_format($amount / 100, 2, '.', '') ?></b>
+                    <?php echo $configData['currency_value'] . number_format($amount / 100, 2, '.', '') ?>
                 </td>
                 <td class="text-muted">
                     <span class="cb-portal-invoice-desc">
@@ -50,7 +51,7 @@
                      <?php if ($settingconfigData["invoice"]["download"] == 'true') { 
                     	 $invoiceAsPdf = getEditUrl("downloadInvoice.php", $configData) . "?invoice_id=" . $invoice->id;
                      ?>
-                     <a href="<?php echo $invoiceAsPdf ?>"> 
+                     <a href="<?php echo $invoiceAsPdf ?>">
                         Download as PDF<span class="glyphicon glyphicon-cloud-download" title="Download"></span>
                      </a>
                     <?php } ?>
