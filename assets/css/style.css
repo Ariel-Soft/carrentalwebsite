@@ -126,7 +126,6 @@ ul.list-unstyled.plan-border li button {
     background: #5cb85c none repeat scroll 0 0;
     border: medium none;
     border-radius: 6px;
-	margin-bottom:10px;
     color: #fff;
     font-size: 14px;
     padding: 9px 29px 8px 28px;
@@ -188,21 +187,13 @@ ul.list-unstyled.plan-border li button {
 .alert-warning{    border-color:#d59e18;    color:#e8ba49;}
 /*Test cards dropdown list*/.dropdown-menu.panel{    border:1px solid #D6D3CE;}
 
-
 .list-unstyled.price-data > li:nth-child(2n) {
-
     background: #f6f6f6 none repeat scroll 0 0;
-
 }
-
 .col-body:nth-child(odd) {
-
     background: #f6f6f6 none repeat scroll 0 0;
-
     border-bottom:1px solid #ccc;
-
 }
-
 /************************************************************* Header and footer**************************************************************//* Header*/
 .navbar-static-top{    background:#352d45;    color:#FFFFFF;}/* Brand Logo/Text*/
 .navbar-static-top .navbar-brand {    height:auto;    color:#FFFFFF;    font-family:Helvetica Neue, Helvetica, Arial, sans-serif;}
