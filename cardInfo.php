@@ -22,7 +22,7 @@
 
 <?php
 $card = $servicePortal->getCard();
-$currentYear = date('Y');
+$currentYear = date('Y'); 
 $currentMonth = date('n');
 $cardInfoMsg = null;
 if (!isset($customer->paymentMethod)) { 
