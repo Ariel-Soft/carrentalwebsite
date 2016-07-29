@@ -6,6 +6,7 @@ $allPlans = $servicePortal->retrieveAllPlans();
 $allAddons = $servicePortal->retrieveAllAddons(); 
 $planQuantity = $servicePortal->getSubscription()->planQuantity;
 $planId = $servicePortal->getSubscription()->planId;
+
 $currentTermEnd = $servicePortal->getSubscription()->currentTermEnd;
 $currentTermStart = min($servicePortal->getSubscription()->currentTermStart, $servicePortal->getSubscription()->metaData['start_date']);
 $havePaymentMethod = isset($servicePortal->getCustomer()->paymentMethod);
@@ -43,15 +44,16 @@ $total = ($planResult->price * $servicePortal->getSubscription()->planQuantity);
 if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
     <input id="onePlan" name="onePlan" type="hidden" class="form-control" value="1" > 
 <?php } ?>
-
-<div class="container" >
+<div style="background:#fff!important">
+<div class="container plans-m-left"style="width:100%!important;">
     <div id="cb-wrapper-ssp">
 		<?php include("processing.php") ?>
         <div id="cb-user-content">
-            <form id="form" method="post">
-                <div class="cb-well">
+			
+				<form id="form" method="post">
+                <div class="cb-well" style="margin-top:43px;padding:0!important;background:none!important;border:none!important;width:100%!important;">
                     <div class="cb-product">
-                        <div class="cb-product-header">
+                        <div class="cb-product-header" style="display:none;">
                             <div class="cb-product-steps" data-cb="cb-product-steps">
                                 <div class="cb-product-step current" data-cb-step-for="plan" 
                                     accesskey="" data-cb-current-step='current' id="step-plan">
@@ -71,7 +73,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                             </div>
                         </div>
                         <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="plan" id="changeYourPlan">
-                            <div class="cb-product-box" id="subscriptionForm">
+                            <!--div class="cb-product-box" id="subscriptionForm">
                                 <div class="cb-product-title">
                                     Your Current Plan
                                 </div>
@@ -97,7 +99,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                         </div>
                                     <?php } ?>
                                 </div>
-                            </div>
+                            </div-->
 
                             <?php if (isset($curAddons)) { ?>
                                 <div class="cb-product-box">
@@ -172,7 +174,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                     <a data-cb-next-link="cb-nav-next" class="cb-nav-next" id="next" onclick="savePlan()">Next</a>
                                 </p>
                             <?php } ?>
-                            <div class="clearfix">
+                            <div class="clearfix"></div>
                                 <?php if($havePaymentMethod){ ?>
                                     <input type='button' data-cb="plan" class='btn btn-default' value="Save and Continue" id="continueSubscription" onclick="savePlan()">         
                                 <?php 
@@ -181,20 +183,24 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                     <input type='button' data-cb="plan" class='btn btn-default' value="Add Payment Method" id="addpaymentmethod" onclick="goToPayment()">         
                                 <?php } ?>    
                                 <a class="btn btn-link" id="back" href=<?php echo getCancelURL($configData) ?>>Cancel</a>   
-                            </div>
+                            
                         </div>
 
                         <div id="addons" >
                         </div>
 
-                        <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="review" id="review" style="display: none;" >
-                            <div class="page-header clearfix">
-                                <span class="h3">Review and Confirm</span>
+                        <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="review" id="review" style="display: none;
+    margin-top: -28px !important;" >
+                            <div class="page-header review-border clearfix" style="border:none!important;">
+                                <span class="h3" style="font-size:34px!important;">Review and Confirm</span>
                             </div>
-                            <p>Review the details below and make sure you've selected the right plan. If you have any concerns or questions about the charges, please contact us at <a href="mailto:billing@backand.com">billing@backand.com</a> </p>
-                            <div class="cb-product-box">
+							<div class="view-border-bottom">
+                            <p class="review-para">Review the details below and make sure you've selected the right plan. <br>
+							If you have any concerns or questions about the charges, please contact us at <a href="mailto:billing@backand.com" style="color:#5695d1!important;text-decoration:none!important;">billing@backand.com</a> </p></div>
+                            <!--p>Review the details below and make sure you've selected the right plan. If you have any concerns or questions about the charges, please contact us at <a href="mailto:billing@backand.com">billing@backand.com</a> </p-->
+                            <div class="cb-product-box selectplan-box">
                                 <div class="cb-product-title">
-                                    Selected Plan
+                                    SELECTED PLAN
                                 </div>
                                 <div class="cb-product-list" id="selectedLineItems">
                                     <div class="row cb-product-item">
@@ -245,15 +251,15 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                             <?php }
                                             ?>
                                         </div>
-                                        <input type="hidden" value="<?php echo $subscriptionMessage ?>" name="submessge" id="submessge" /> 
+                                        <input type="hidden" value="<?php echo nl2br($subscriptionMessage) ?>" name="submessge" id="submessge" /> 
                                     </div>
                                 </div>
                             </div>
-                            <hr class="clearfix">
+                            <hr class="clearfix subscrip-button">
                             <p class="cb-step-nav clearfix">
                                 <a data-cb-prev-link="cb-nav-prev" class="cb-nav-prev" href="#" id="prev1" onclick="backAddon()">Prev</a>
                             </p>
-                            <div class="clearfix">
+                            <div class="clearfix subscrip-button">
                                 <input type="button" data-cb="review" class="btn btn-primary" value="Change Subscription" id="changeSubscription">
                                 <a class="btn btn-link" id="back2" href=<?php echo getCancelURL($configData) ?>>Cancel</a>
                             </div>
@@ -272,65 +278,63 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         </div>
     </div>
 </div>
-    
+   
 <div>    
 <?php 
     $usage = $servicePortal->retrieveUsage($configData);
-                                    
-    if (property_exists($usage, "appName")) {
-        $nextBillingCycleDate = "";
-        if (property_exists($usage->current, "nextBillingCycleDate")) {
-            $nextBillingCycleDate = $usage->current->nextBillingCycleDate;
-        }
+    if(!empty($usage)){                           
+		if (property_exists($usage, "appName")) {
+			$nextBillingCycleDate = "2016-02-02";
+			if (property_exists($usage->current, "nextBillingCycleDate")) {
+				$nextBillingCycleDate = $usage->current->nextBillingCycleDate;
+			}
+		
 ?>
     
-<div class="container" id="cd-usage">
+<div class="container" id="cd-usage" style="width:100%!important;margin:0 !important;">
     <div id="cb-wrapper-ssp">
         <div id="cb-user-usage">
-            <div class="cb-well">
+            <div class="cb-well" style="border:none;background:none;width:100%!important;">
                 <div class="cb-product">
                     <div class="cb-product-header">
                         <div class="cb-product-steps" data-cb="cb-product-steps">
                             <div class="cb-product-step current" data-cb-step-for="plan" 
                                 accesskey="" data-cb-current-step='current' id="step-plan">
-                                <b>Your Usage / Your Plan</b> <br>Next Billing Cycle:&nbsp;<?php echo date('d-M-Y', strtotime($nextBillingCycleDate)) ?>
+                                <h2>Your Usage</h2><p> <br><b style="font-size:14px;">Next Billing Cycle:</b>&nbsp;<?php echo date('d-M-Y', strtotime($nextBillingCycleDate)) ?>	</p>
                             </div>
 
-                        </div>
-                    </div>
+                        </div>	
+                    </div>			                            
                     <div class="cb-product-body" data-cb="cb-product-body" data-cb-req-from="plan" id="changeYourPlan">
                         <div class="row cb-product-item">
                             
-                            <div class="col-usage col-border col-xs-auto">
-                                <div class="col-title">
-                                    Period
-                                </div>
-                                <?php
-                                $currentStartDate = $usage->current->startDate;
-                                $currentEndDate = (string)$usage->current->endDate;
-        
-                                ?>
-                                <div class="col-body" style="box-shadow: 0 1px 0 black;">
-                                    <?php echo date('d-M-Y', strtotime($currentStartDate)) ?>&nbsp;to&nbsp;<?php echo date('d-M-Y', strtotime($currentEndDate)) ?>
-                                </div>
-                                <?php
-                                if (property_exists($usage, "prev")) {
-                                    for($j = 0; $j < count($usage->prev); $j++) {
-                                        $prevStartDate = $usage->prev[$j]->startDate;
-                                        $prevEndDate = (string)$usage->prev[$j]->endDate;
-
-                                       ?> 
-                                    <div class="col-body">
-                                        <?php echo date('d-M-Y', strtotime($prevStartDate)) ?>&nbsp;to&nbsp;<?php echo date('d-M-Y', strtotime($prevEndDate)) ?>
-
-                                    </div>
-                                <?php
-                                    }
-                                }
-                                ?>
-                            </div>
-                            
+                            <div class="col-usage col-border col-xs-auto">                              
+								<div class="col-title" style="background:none!important;border:none!important;">                                  
+									                              
+								</div>                             
+								<?php                               
+									$currentStartDate = $usage->current->startDate;                      
+									$currentEndDate = (string)$usage->current->endDate;     
+								?>                               
+								<div class="col-body" style="border:none!important;">                 
+									<?php echo date('d-M-Y', strtotime($currentStartDate)) ?>&nbsp;to&nbsp;
+									<?php echo date('d-M-Y', strtotime($currentEndDate)) ?>                        
+								</div>                           
+								<?php                              
+								if (property_exists($usage, "prev")) {                             
+								for($j = 0; $j < count($usage->prev); $j++) {                                  
+									$prevStartDate = $usage->prev[$j]->startDate;                            
+									$prevEndDate = (string)$usage->prev[$j]->endDate;                
+								?>                                 
+								<div class="col-body" style="border:none!important;">            
+									<?php echo date('d-M-Y', strtotime($prevStartDate)) ?>&nbsp;to&nbsp;<?php echo date('d-M-Y', strtotime($prevEndDate)) ?>
+								</div>                        
+								<?php                                    }                            
+								}                  
+								?>                          
+								</div>
                             <?php
+								
                                 for($i = 0; $i < count($usage->current->usage); $i++) {
                                     $currentAddon = $usage->current->usage[$i];
                                 //foreach ($usage->current->usage as $addon) {
@@ -343,7 +347,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                         <div class="col-title">
                                             <?php echo $currentAddon->addon ?>&nbsp;<?php echo $units ?>
                                         </div>
-                                        <div class="col-body" style="box-shadow: 0 1px 0 black;">
+                                        <div class="col-body">
                                             <span style="<?php echo ($currentAddon->usage > $currentAddon->threshold ? 'color:red' : '')?>"><?php echo (is_numeric($currentAddon->usage) ? number_format($currentAddon->usage,$currentAddon->round) : '--') ?></span>&nbsp;/&nbsp;
                                                 <?php echo (is_numeric($currentAddon->threshold) ? number_format($currentAddon->threshold) : '--') ?>
                                         </div>
@@ -354,7 +358,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
                                                 $prevAddon = $usage->prev[$j]->usage[$i];
                                                ?> 
                                             <div class="col-body">
-                                                <span style="<?php echo ($prevAddon->usage > $prevAddon->threshold ? 'color:red' : '')?>"><?php echo (is_numeric($prevAddon->usage) ? number_format($prevAddon->usage,$prevAddon->round) : '--') ?></span>&nbsp;/&nbsp;
+                                                <span></span>&nbsp;/&nbsp;
                                                     <?php echo (is_numeric($prevAddon->threshold) ? number_format($prevAddon->threshold) : '--') ?>
                                             </div>
                                             <?php
@@ -379,20 +383,65 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         </div>
     </div>
 </div>
-    <?php } ?>
+    <?php }
+	} ?>
 </div>      
-<div class="container" >
+<!--div class="container" >
     <div style="">    
         <img src="assets/images/pricing.png" style="width:100%">
     </div>
-</div>    
+</div-->     
 <?php include("footer.php"); ?>
 <script>
+
+$(document).ready(function(){
+	var currentPlan = $('*').find('input:hidden[name=plan_id]:checked').val();
+	if(currentPlan !='prototype'){
+		$('*').find('input:hidden[name=plan_id]:checked').parent().parent().parent().addClass( "production-plan" ).find(".radio").css("height","116px");
+		
+	}else{
+		 $('input:disabled[name=plan_id]').each(function(){
+			var d = $(this).val();
+			if(d=='prototype'){
+				$(this).parent().parent().parent().addClass( "production-plan" ).find(".radio").css("height","116px");
+				
+			}else{
+				$(this).parent().parent().parent().addClass( "disableClass" );
+				$('*').find('.select_button').prop('disabled',true);
+			}
+		});		
+	}
+	$("*").find(".production-plan").prepend("<div class='current-plan'>Your Current Plan</div>");
+	$("*").find(".production-plan").find("ul").find(".select_button").html("CURRENT PLAN");
+	$("*").find(".production-plan").find("ul li").last().addClass("current_plan");
+	
+});
+
+ $(document).ready(function(){
+	$('.radio').click(function(){
+		var currentPlan = $('*').find('input:hidden[name=plan_id]:checked').val();
+		if(currentPlan !='prototype'){
+		
+		//	var res = $(selector).val();
+			$(this).parent().addClass('production-plan');
+			$(this).parent().siblings().removeClass('production-plan');
+			$(this).find('input:hidden[name=plan_id]').attr("checked", "checked");
+			//$('input[name=plan_quantity]').attr('disabled', true);
+			//$("input[data-plan-quantity='"+ res +"']").removeAttr('disabled');
+			$(this).parent().siblings().find("input:hidden[name=plan_id]").removeAttr('checked');
+		}
+	});
+ });
+
+        
+      
     var addonIdList = [];
     var addonQuantityList = [];
     var currencyValue = "<?php echo $configData['currency_value'] ?>";
+	
     $(function () {
         var onePlan = $("#onePlan").val();
+		
         if (onePlan === 1) {
             $('#step-plan').toggleClass('cb-product-step current cb-product-step past');
             $('#step-addon').toggleClass('cb-product-step future cb-product-step current');
@@ -403,7 +452,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         }
         <?php if(!$havePaymentMethod){ ?>
         $("#cb-handle-progress .alert-danger").show();
-        $("#cb-handle-progress .alert-danger .message").html("Payment method is missing: Before choosing a plan you must <a onclick='goToPayment(); return false;'>add a payment method</a>");
+        $("#cb-handle-progress .alert-danger .message").html("<b>Payment method is missing:</b> Before choosing a plan you must add a payment method <a onclick='goToPayment(); return false;'>Add a payment method</a>");
         <?php } ?>
         disableButtons();
         
@@ -423,25 +472,31 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
     }
     $('input:radio[name=plan_id]').click(function(){
         disableButtons(); 
-    });
+    });  
     
     function savePlan() {
-        var planId = $('input:radio[name=plan_id]:checked').val();
+        var planId = $('input:hidden[name=plan_id]:checked').val();
+		
         if (planId) {
             var price = $("span[data-plan-total-price='" + planId+"']").text();
+			
             var planPrice = $("input[data-plan-price='" + planId +"']").val();
+			
             var quantity = $("input[data-plan-quantity='" + planId+ "']").val();
+			
             var replaceHtml = "";
             if ($("input[data-plan-quantity='" + planId+ "']").length > 0 ) {
                 replaceHtml = toTitleCase(planId) + ' / ' + 'Month ' + '(' + currencyValue + ' ' + planPrice + ' x ' + quantity + ')';
             } else {
                 replaceHtml = toTitleCase(planId);
             }
+			console.log(replaceHtml);
             var data = {plan_id: planId, plan_quantity: quantity };
             if ($("#NoAddon").val() === "1") {
                 saveAddon(false);
                 return;
             }
+			
             $.ajax({
                 type: 'POST',
                 url: 'editAddon.php',
@@ -485,8 +540,8 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         $('#prev1, #review').show();
         $('#cb-wrapper-ssp').css('min-height', '620px');
         
-        var planRadioValue = $('input:radio[name=plan_id]:checked').val();
- 
+        var planRadioValue = $('input:hidden[name=plan_id]:checked').val();
+		//console.log(planRadioValue);return false;
         var params = {action : "retrieveNewEstimate", planId: planRadioValue};
         AjaxCall('api.php', 'POST', 'json', $.param(params), saveEstimate);
     }
@@ -676,7 +731,8 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
 	 * On click Change Subscription button, sends Ajax request to update the subscription.
 	 */
     $('#changeSubscription').click(function () {
-        var planId = $('input[name=plan_id]:checked').val();
+        var planId = $('input:hidden[name=plan_id]:checked').val();
+		
 		var planQuantity = 1;
 		
         if ($("input[data-plan-quantity='" + planId + "']").length > 0) {
@@ -684,6 +740,7 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         } 
 
         var endOfTerm = $("#end_of_term").val();
+		console.log(endOfTerm);
         var addons = {};
         for (i = 0; i < addonIdList.length; i++) {
             var addonId = addonIdList[i];
@@ -695,21 +752,3 @@ if ( !$servicePortal->planAccessible($allPlans, $settingconfigData) ) { ?>
         AjaxCallMessage('api.php', 'POST', 'json', $.param(params), 'editsubscription');
     });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
