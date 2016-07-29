@@ -751,21 +751,3 @@ $(document).ready(function(){
         AjaxCallMessage('api.php', 'POST', 'json', $.param(params), 'editsubscription');
     });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
