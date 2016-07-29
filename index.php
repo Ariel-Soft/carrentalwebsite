@@ -1,10 +1,13 @@
 <?php
+
 include("header.php");
 $customer = $servicePortal->getCustomer();
 $billingAddress = $customer->billingAddress;
 $subscription = $servicePortal->getSubscription();
 $customerInvoice = $servicePortal->retrieveInvoice();
+
 ?> 
+<div style="background:#fff!important">
 <div class="container container-m-left">
     <div id="cb-wrapper-ssp">
 
@@ -163,8 +166,8 @@ $customerInvoice = $servicePortal->retrieveInvoice();
                         </a>
                 </div>
 				<?php include("cardInfo.php") ?>
-            </div>      
-
+            </div>       
+ 
         <div class="cb-well" id="cb-portal-billing">
             <div class="page-header clearfix" id="cb-portal-billing-title">
                 <span class="h3">Billing Address</span>                 
