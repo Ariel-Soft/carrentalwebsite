@@ -37,7 +37,7 @@ if (!isset($customer->paymentMethod)) {
 <?php if (!is_null($cardInfoMsg)) { ?>
     <div class="form-horizontal">
         <div class="text-center">
-            <div class="alert alert-info">
+            <div class="alert alert-info billing-info">
                 <div class="media text-left">
                     <span class="glyphicon glyphicon-info-sign pull-left"></span>
                     <div class="media-body">
@@ -53,37 +53,26 @@ if (!isset($customer->paymentMethod)) {
 		<div class="row">
     		<div class="col-sm-6">
         		<div class="row">
-            		<label class="col-xs-5 control-label">Card type</label>
-            		<div class="col-xs-7">
-                		<div id="cb-cards">
+            		<label class="col-xs-4 control-label">Card type</label>
+            		<div class="col-xs-8 form-control-static">
+                		<div id="cb-cards">							<b><?php echo $card->cardType ?></b>
                     		<span class="<?php echo $card->cardType ?>"></span>
                 		</div>
             		</div>
-        		</div>
-        		<div class="row">
-            		<label class="col-xs-5 control-label">Card Number</label>
-            		<div class="col-xs-7 form-control-static">
-                		**** **** **** <?php echo esc($card->last4) ?>
-            		</div>
-        		</div>
-        		<div class="row">
-            		<label class="col-xs-5 control-label">Expiry</label>
-            		<div class="col-xs-7 form-control-static">
-                		<?php echo esc($card->expiryMonth) . "/" . esc($card->expiryYear) ?>
-            		</div>
-        		</div>
-    		</div>
-    		<?php if(isset($card->firstName)) { ?></li>
-    		<div class="col-sm-6">
-        		<div class="row">
-            		<label class="col-xs-5 control-label">Name</label>
-            		<div class="col-xs-7 form-control-static">
-                		<address><?php echo esc($card->firstName) . " " . esc($card->lastName) ?><br></address>
-           	 		</div>
-        		</div>
-    		</div>
-    		<?php } ?>
-		</div>
+        		</div>			</div>				    		<?php if(isset($card->firstName)) { ?></li>    		<div class="col-sm-6">        		<div class="row">            		<label class="col-xs-2 control-label">Name</label>            		<div class="col-xs-10 form-control-static">                		<b><address><?php echo esc($card->firstName) . " " . esc($card->lastName) ?><br></address></b>           	 		</div>        		</div>    		</div>        </div>    		<?php } ?>				<div class="row">    		<div class="col-sm-6">        		<div class="row">
+							<label class="col-xs-4 control-label">Card Number</label>
+							<div class="col-xs-8 form-control-static">
+								<b>**** **** **** <?php echo esc($card->last4) ?></b>
+							</div>
+						</div>				</div>				<div class="col-sm-6"> 
+						<div class="row"> 
+							<label class="col-xs-2 control-label">Expiry</label>
+							<div class="col-xs-10 form-control-static">
+								<b><?php echo esc($card->expiryMonth) . "/" . esc($card->expiryYear) ?></b>
+							</div>
+						</div>
+					</div>
+				</div>
 	</div>
 <?php }
 } ?>	

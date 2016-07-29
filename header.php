@@ -10,4 +10,4 @@ include_once('init.php');?>
         <link rel="stylesheet" type="text/css" href="assets/css/portal.css">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     </head>
-    <body>
+    <body style="background:#eaeaea">

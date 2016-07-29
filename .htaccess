@@ -1,0 +1,3 @@
+<IfModule mod_suphp.c>
+suPHP_ConfigPath /home/backan6/public_html/billqa
+</IfModule>
