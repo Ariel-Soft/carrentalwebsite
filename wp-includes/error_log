@@ -1,0 +1,9 @@
+[11-Nov-2015 09:10:50 America/Chicago] PHP Fatal error:  Call to undefined function _deprecated_file() in /home/carrent/public_html/wp-includes/rss-functions.php on line 8
+[27-Dec-2016 19:00:19 America/Chicago] PHP Fatal error:  Call to undefined function _deprecated_file() in /home/carrent/public_html/wp-includes/registration-functions.php on line 7
+[28-Dec-2016 13:32:08 America/Chicago] PHP Fatal error:  Call to undefined function _deprecated_file() in /home/carrent/public_html/wp-includes/registration-functions.php on line 7
+[02-Jan-2017 21:18:43 America/Chicago] PHP Fatal error:  Call to undefined function add_filter() in /home/carrent/public_html/wp-includes/user.php on line 71
+[02-Jan-2017 21:31:51 America/Chicago] PHP Warning:  require(ABSPATHWPINC/option.php): failed to open stream: No such file or directory in /home/carrent/public_html/wp-includes/functions.php on line 8
+[02-Jan-2017 21:31:51 America/Chicago] PHP Warning:  require(ABSPATHWPINC/option.php): failed to open stream: No such file or directory in /home/carrent/public_html/wp-includes/functions.php on line 8
+[02-Jan-2017 21:31:51 America/Chicago] PHP Fatal error:  require(): Failed opening required 'ABSPATHWPINC/option.php' (include_path='.:/opt/php54/lib/php') in /home/carrent/public_html/wp-includes/functions.php on line 8
+[11-Mar-2017 00:38:44 America/Chicago] PHP Fatal error:  Call to undefined function _deprecated_file() in /home/carrent/public_html/wp-includes/rss-functions.php on line 8
+[22-Mar-2017 19:48:50 America/Chicago] PHP Fatal error:  Call to undefined function _deprecated_file() in /home/carrent/public_html/wp-includes/registration-functions.php on line 7

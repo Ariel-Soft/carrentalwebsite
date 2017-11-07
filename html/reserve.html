@@ -1,0 +1,585 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>reserve</title>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/datepicker.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/Font-Awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="css/build.css" />
+    <link href="css/switcher.css" rel="stylesheet">
+    <link href="css/colorRed.css" rel="alternate stylesheet" title="colorRed" />
+    <link href="css/colorgreen.css" rel="alternate stylesheet" title="colorgreen" />
+    <link href="css/colorpink.css" rel="alternate stylesheet" title="colorpink" />
+    <link href="css/colororange.css" rel="alternate stylesheet" title="colororange" />
+    <link href="css/colordarkblue.css" rel="alternate stylesheet" title="colordarkblue" />
+    <link href="css/colordarkred.css" rel="alternate stylesheet" title="colordarkred" />
+</head>
+
+<body>
+    <div data-header="sticky" data-header-top="200" class="l-theme animated-css">
+        <!-- Start Switcher-->
+        <div class="switcher-wrapper">
+            <div class="demo_changer">
+                <div class="demo-icon color-primary"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+                <div class="form_holder">
+                    <div class="predefined_styles">
+                        <div class="skin-theme-switcher">
+                            <h4>Color</h4>
+
+                            <a href="javascript:void(0);" data-switchcolor="color1" style="background-color:#3399FF;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colorRed" style="background-color:#D4002A;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colorgreen" style="background-color:#28af0f;" class="styleswitch"></a>
+
+                            <a href="javascript:void(0);" data-switchcolor="colorpink" style="background-color:#a5529f;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colororange" style="background-color:#eb9d07;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colordarkblue" style="background-color:#003259;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colordarkred" style="background-color:#650303;" class="styleswitch"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<section class="content_sec">
+  <div class="container-fluid">
+    <div class="main_tabs"> 
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation"><a href="index.html" title="Index">1</a> </li>
+        <li role="presentation"><a href="#">2</a></li>
+        <li role="presentation"><a href="#">3 <span>Rental Option</span></a></li>
+        <li role="presentation" class="active"><a href="#">4<span>Your Information</span></a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+      
+		
+        <div role="tabpanel" class="tab-pane active" id="settings">
+			
+			<!--<div class="content-information">
+				<div class="tab_nearconten">
+				<div class="bdr_top"></div>
+				<div class="modify">
+					<a href="#" class="close_detialpopup2" title="Modify / View Rental Details"> Close <i class="fa fa-times" aria-hidden="true"></i></a>				
+				</div>
+				<div class="">
+                <div class="row">
+                 	<div class="col-sm-6 bdr_right">
+						<div class="tab_text2">								  
+							<h4 class="car_head">Location & Date
+								<a class="pull-right modity_a" href="#" title="Modify / View Rental Details"><i class="fa fa-pencil" aria-hidden="true"></i> Modify</a>
+							</h4>
+						</div> 
+						<div class="tab_text tab_text3">
+						  <h5> Pick-Up </h5>
+						  <p> Pearson International Airport,YYZ </p>
+						  <time> Tue, Mar 14, 12:00 PM </time>
+						</div> 
+						<div class="tab_text tab_text3 return_div">
+						  <h5> Return </h5>
+						  <p> Pearson International Airport,YYZ </p>
+						  <time> Thur, Mar 16, 12:00 PM </time>
+						</div>						
+						<div class="row_margin">
+							<div class="row">
+								<div class="col-sm-4 col-xs-4">
+									<div class="car_cls">
+										<h4 class="car_head">Car Class</h4>
+										<p>Luxury Sports Car</p>
+										<h5>Tesla Model S or Similar</h5>
+									</div>
+								</div>
+								<div class="col-sm-3 col-xs-3">
+									<div class="car_cls">
+										<img src="images/car_img1.jpg" alt="" />
+									</div>
+								</div>
+								<div class="col-sm-5 col-xs-5">
+									<div class="car_cls">
+										<a class="pull-right modity_a" href="#" title="Modify / View Rental Details"><i class="fa fa-pencil" aria-hidden="true"></i> Modify</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tbl_div">
+							<h4 class="tbl_hd">Your Information</h4>
+							<table class="">								
+								<tbody>
+									<tr>
+										<th>Name:</th>
+										<td><b>Residence:</b></td>
+									</tr>
+									<tr>
+										<th>Age:</th>	
+										<td></td>										
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						
+						<div class="rate_hd">
+							<h4 class="tbl_hd">Rate Terms</h4>
+							<h6>Theae rate terms of this specific rental.</h6>
+							<p>
+								If for any reason you change your rental parameters (pick up dates, times, etc.), those changes must 
+								follow these terms or your rate will also change.
+							</p>
+							<p>
+								If you need to cancel 24 hours prior to the scheduled pick-up time, we will refund the full prepaid
+amount less a 50.00 USD processing fee.
+							</p>
+							<p>
+								If you do not cancel your reservation within 24 hours of the scheduled pick-up timer or if you fail to rent 
+the car,a refund of the full prepaid amount less a NO SHOW fee of 150.00 USD, will be charged.
+							</p>
+							<p>
+								Your rate was calculated based on the information provided. Some modification may change this rate.& Days maximum rental allowed.
+							</p>
+							<p>Unlimited free miles</p>
+						</div>
+                    </div>
+                   <div class="col-sm-6">
+                        <div class="table-responsive">
+                            <table class="table tbl">
+                        <tbody>
+                            <tr> 
+                                <td> Base Rate <p>No. of Days: 2</p> </td>
+                                <td> $122.40 </td>
+                            </tr>
+                            <tr> 
+                                <td> Rental Options <p>None Selected</p></td>
+                                <td> $0.00</td>
+                            </tr>
+                            <tr> 
+                                <td> Discount Code </td>
+                                <td> NA</td>
+                            </tr>
+                            <tr> 
+                                <td> Sales </td>
+                                <td> -$20.00</td>
+                            </tr>
+                            <tr> 
+                                <td> Free & Taxes 
+									<table>
+										<tbody>
+											<tr><td class="fee_tax">Concession Recovery Fee(11.11%)</td></tr>
+											<tr><td class="fee_tax">Customer Facilty Charge</td></tr>
+											<tr><td class="fee_tax">Tourism Assessment Fee (3.5%)</td></tr>
+											<tr><td class="fee_tax">Vehicle License Fee-0.97/day</td></tr>
+											<tr><td class="fee_tax">Total Tax</td></tr>
+									</table>
+									
+								</td>
+                                <td> $22.50
+									<table>
+										<tbody>
+											<tr><td class="fee_tax">5.25</td></tr>
+											<tr><td class="fee_tax">10.00</td></tr>
+											<tr><td class="fee_tax">4.49</td></tr>
+											<tr><td class="fee_tax">4.49</td></tr>
+											<tr><td class="fee_tax">4.49</td></tr>
+									</table>
+								</td>
+                            </tr>
+                            <tr> 
+                                <td> &nbsp; </td>
+                                <td> &nbsp; </td>
+                            </tr>
+                            <tr> 
+                                <td> Estimated Total</td>
+                                <td> <a href="#" title="">$124.90 </a></td>
+                            </tr>
+                            <tr> 
+                                <td> Amount Prepaid(USD) </td>
+                                <td> $124.90</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        </div>  
+                   </div>
+                  </div>
+				</div>
+			</div>
+				<div class="modify">
+					<a href="#"  class="close_detialpopup2"  title="Modify / View Rental Details" > Close <i class="fa fa-times" aria-hidden="true"></i></a>
+				<div class="continue continue_btn"><a href="#" title="continue">Continue</a></div>
+				</div>
+			</div>-->
+		
+		
+		
+			<div class="before-settings">
+			<div class="tab_nearconten tab-nearcontent">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="tab_text_modify">
+                                    <h5> Pick-Up </h5>
+                                    <p> Pearson International Airport,YYZ </p>
+                                    <time> Tue. Mar 14 12:00 PM </time>
+                                    <div class="modify-0ne">
+                                        <div class="modi_fy">
+                                            <a href="#" class="modify_1" data-toggle="modal" data-target=".bs-example-modal-md" title="Modify"><span><i class="fa fa-pencil" aria-hidden="true"></i></span>Modify</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="tab_text boder_left">
+                                    <div class="tab_text_modify">
+                                        <h5> Pick-Up </h5>
+                                        <p> Pearson International Airport,YYZ </p>
+                                        <time> Tue. Mar 14 12:00 PM </time>
+                                        <div class="modify-0ne">
+                                            <div class="modi_fy">
+                                                <a href="#" class="modify_1" data-toggle="modal" data-target=".bs-example-modal-md2" title="Modify"><span><i class="fa fa-pencil" aria-hidden="true"></i></span>Modify</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row1">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="modify_below">
+                                                <div class="row">
+                                                    <div class="col-sm-6 text-center">
+                                                        <div class="car_img car_img11">
+                                                            <img src="images/car_img1.jpg" alt="Car IMG">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="car_info">
+                                                            <h3 class="car_name"> Luxury Sports Car </h3>
+                                                            <p>
+                                                                Tesla Modal S or Similar
+                                                            </p>
+                                                            <a href="#" title=""> View Vehicle Information  </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="modify_11" data-toggle="modal" data-target=".bs-example-modal-md3" title="Modify"><span><i class="fa fa-pencil" aria-hidden="true"></i></span>Modify</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="table-responsive responaive_ness">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td> Base Rate </td>
+                                        <td> $122.40</td>
+                                    </tr>
+                                    <tr>
+                                        <td> Rental Options </td>
+                                        <td> $0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td> Discount Code </td>
+                                        <td> NA</td>
+                                    </tr>
+                                    <tr>
+                                        <td> Sales </td>
+                                        <td> -$22.40</td>
+                                    </tr>
+                                    <tr>
+                                        <td> Free & Taxes </td>
+                                        <td> $22.40</td>
+                                    </tr>
+                                    <tr>
+                                        <td> &nbsp; </td>
+                                        <td> &nbsp; </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Estimated Total</td>
+                                        <td> <a href="#" title="">$124.40 </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td> Amount Prepaid(USD) </td>
+                                        <td> $124.40</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="modify modify_below">
+                                <a href="#" class="front-detail2" title="Modify"><i class="fa fa-pencil" aria-hidden="true"></i> Modify<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                     
+
+                    </div>
+                  </div>
+            </div>
+        
+<!-- 20-feb html start here ================== -->
+
+		
+			<div class="info_div">
+				<h3 class="ur_info color">Your Information</h3>			
+				<div class="form_div">
+					<div class="row">
+						<div class="col-md-2 col-sm-2 col-xs-3">
+							<div class="label_div">
+								<label>First Name</label>
+							</div>
+						</div>
+						<div class="col-md-10 col-sm-10 col-xs-9">
+							<div class="input_div">
+								<input type="text" placeholder="">
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-2 col-sm-2 col-xs-3">
+							<div class="label_div">
+								<label>Last Name</label>
+							</div>
+						</div>
+						<div class="col-md-10 col-sm-10 col-xs-9">
+							<div class="input_div">
+								<input type="text" placeholder="">
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-2 col-sm-2 col-xs-3">
+							<div class="label_div">
+								<label>Email</label>
+							</div>
+						</div>
+						<div class="col-md-10 col-sm-10 col-xs-9">
+							<div class="input_div">
+								<input type="text" placeholder="">
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-2 col-sm-2 col-xs-3">
+							<div class="label_div">
+								<label>Phone</label>
+							</div>
+						</div>
+						<div class="col-md-10 col-sm-10 col-xs-9">
+							<div class="input_div">
+								<input type="text" placeholder="">
+							</div>
+						</div>
+					</div>
+					<h3 class="ur_info ur_info2 color">Credit Card & Billing Information</h3>
+					<div class="row">
+						<div class="col-md-2 col-sm-2 col-xs-3">
+							<div class="label_div">
+								<label>Card Number</label>
+							</div>
+						</div>
+						<div class="col-md-10 col-sm-10 col-xs-9">
+							<div class="input_div">
+								<input type="text" placeholder="">
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-2 col-sm-2 col-xs-4">
+							<div class="label_div">
+								<label>Expiration Date</label>
+							</div>
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-4">
+							<div class="input_div">
+								<select>
+								  <option value="Month">Month</option>
+								  <option value="January">January</option>
+								  <option value="February">February</option>
+								  <option value="March">March</option>
+								  <option value="April">April</option>
+								  <option value="May">May</option>
+								  <option value="June">June</option>
+								  <option value="July">July</option>
+								  <option value="August">August</option>
+								  <option value="September">September</option>
+								  <option value="October">October</option>
+								  <option value="November">November</option>
+								  <option value="">December</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-4">
+							<div class="input_div">
+								<select>
+								  <option value="Year">Year</option>
+								  <option value="saab">2017</option>
+								  <option value="mercedes">2018</option>
+								  <option value="audi">2019</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 col-sm-2 col-xs-3">
+							<div class="label_div">
+								<label>Security Code</label>
+							</div>
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-5">
+							<div class="input_div">
+								<input type="password" placeholder="" style="width:60px !important">
+							</div>
+						</div>
+					</div>
+					<div class="payment">
+						<!--<h3 class="ur_info ur_info2">Other Payment Methods</h3>-->						
+						<!--<div class="row">
+							<div class="col-md-7 col-sm-7 col-xs-12">
+								<div class="row">
+									<div class="col-md-4 col-sm-4 col-xs-4">
+										<div class="form_logo">
+											<img src="images/form-img1.jpg" alt="" />
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xs-4">
+										<div class="form_logo">
+											<img src="images/form-img2.jpg" alt="" />
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xs-4">
+										<div class="form_logo">
+											<img src="images/form-img3.jpg" alt="" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>-->
+						<div class="term_div">
+							<h3 class="ur_info ur_info2">Terms & Conditions</h3>
+
+
+
+                            <input type="checkbox">  <a  href="#" title="Terms & Conditions"> I accept the terms and conditions</a>
+							<!--<h3 class="ur_info ur_info2">Your credit card will be charged $124.90</h3>-->
+						</div>
+					</div>
+					<div class="reserve equipment text-right">
+						<a href="#" title="reserve">Reserve</a>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+      </div>
+    </div>
+  </div>
+
+    <div class="footer">
+    
+
+
+        <a href="https://www.rentcentric.com" target="_blank">  © Copyright 2016 Rent Centric Inc. All rights reserved</a>
+     
+    </div>
+</section>
+    <div class="modal fade bs-example-modal-md box-farm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Modify Rental Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="up-date">
+                        <div class="input-group date" id="datetimepicker2">
+                            <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i> </span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <button>Update</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade bs-example-modal-md2 box-farm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-md2" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Modify Rental Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="up-date">
+                        <div class="input-group date" id="datetimepicker2">
+                            <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i> </span>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <button>Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade bs-example-modal-md3 box-farm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-md3" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Modify Rental Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="up-date">
+                        <input type="text" class="form-control type-test" placeholder="Enter detail here">
+                        <button class="up-date">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- jQuery --> 
+    <script src="js/jquery.js"></script>
+    <script src='js/bootstrap.min.js'></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/dmss.js"></script>
+    <!--<script src="js/custom.js"></script> -->
+    <script>
+
+$(document).ready(function(){
+		$(function () {
+                $('#datetimepicker2, #datetimepicker2').datetimepicker({
+                    locale: 'en'
+                });
+            });
+
+
+			$('.continuous').click(function(){
+				$('.loader').addClass('pageload')
+				//$('.before-settings').removeClass('hidden')
+			});
+
+});
+    </script>
+</body>
+</html>

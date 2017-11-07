@@ -1,0 +1,1 @@
+[18-Aug-2016 16:50:10 America/Chicago] PHP Fatal error:  Class 'WP_Filesystem_Base' not found in /home/carrent/public_html/wp-admin/includes/class-wp-filesystem-ftpext.php on line 17

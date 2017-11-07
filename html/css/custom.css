@@ -1,0 +1,855 @@
+body, html {
+	width: 100%;
+	height: 100%;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+body {
+	overflow-x: hidden;
+}
+a {
+	text-decoration: none !important;
+}
+a:focus {
+	outline: 0px !important;
+	text-decoration: none;
+}
+body, h1, h2, h3, h4, h5, h6 {
+	font-weight: 300;
+}
+img {
+	max-width: 100%;
+}
+#header {
+	padding:10px 15px;
+	background: #3f92dc;
+	background: -webkit-linear-gradient(#48a7fc, #3376b3);
+	background: -moz-linear-gradient(#48a7fc, #3376b3);
+	background: -ms-linear-gradient(#48a7fc, #3376b3);
+	background: -o-linear-gradient(#48a7fc, #3376b3);
+	background: -linear-gradient(#48a7fc, #3376b3);
+	position:relative; z-index:99999;
+}
+
+a.logo {
+	padding: 15px 11px 15px 0;
+    display: inline-block;
+    max-width: 280px;
+}
+.navbar-default {
+    background: none;
+    border: none;
+	margin-bottom:0px;
+}
+nav.navbar.navbar-default ul.nav.navbar-nav.navbar-right li a, .link_right a {
+    color: #fff;
+    font-size: 20px;
+    padding: 25px 0;
+	display:inline-block;
+	font-weight: 500;
+}
+section.sign_upform {
+    background: url(../images/signup_bg.jpg) no-repeat;
+	background-size:cover;
+}
+.sign_upform h1 {
+    font-weight: 400;
+    color: #fff;
+	padding: 70px 0;
+}
+.signup_form {
+    background: #fff;
+    padding:30px;
+}
+input.form-control {
+    background: #d8d8d8;
+    height: 75px;
+	border: none;
+    border-radius: 0;
+    box-shadow: none;
+	font-size: 17px;
+    font-weight: 500;
+}
+input.form-control:focus{
+	box-shadow:none;	
+}
+.signup_form span.input-group-addon i {
+    font-size: 37px;
+    color: #000;
+    padding-left: 0px;
+}
+.signup_form span.input-group-addon {
+    background: #d8d8d8;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+	padding-right: 0 !important;
+}
+.signup_form label {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+	display:block;
+}
+input.form-control[type="submit"] {
+    background: #2c95ff url(../images/submit_arrow.png) no-repeat;
+    font-size: 0px;
+    background-position: center center;
+}
+section.sign_upform {
+    min-height: 590px;
+	position:fixed;
+	bottom:0;
+	left:0;
+	top:0px;
+	right:0px;
+	display: flex;
+	background-position: center center;
+}
+.sign_upform .container{
+	    display: flex;
+    align-items: center;	
+}
+
+
+/* =============  tabs page css start here ============== */
+
+.main_tabs li a{
+    border: none;
+    border-bottom: 3px solid #e0e0e0;
+	color:#3399ff;
+	background:none;
+	margin:0px 3px;
+	color:#e0e0e0;
+	font-weight:500;
+	padding:5px 0;
+	
+}
+
+.main_tabs li.active a, .main_tabs li a:hover, .main_tabs li.active a:hover, .main_tabs li a:focus, .main_tabs li.active a:focus{
+    border: none;
+    border-bottom: 3px solid #3399ff;
+	color:#3399ff;
+	background:none;
+	margin:0px 3px;
+}
+.tab_text{
+	color:#000;
+	font-weight:400;
+	
+}
+.tab_text h5 {
+    color: #3399ff;
+    font-weight: 500;
+	margin-bottom:0px;
+}
+.tab_text p {
+    margin:5px 0;
+    font-size: 14px;
+}
+ul.nav.nav-tabs {
+    display: flex;
+    width: 100%;
+	border: none;
+}
+ul.nav.nav-tabs li {
+    width: 100%;
+}
+.tab_text time {
+    font-size: 16px;
+    font-weight: 500;
+}
+ .tab_nearconten > .row:first-child {
+	margin-left:-5px;
+	margin-right:-5px;
+}
+
+.tab_nearconten > .row > div {
+	padding:5px	
+}
+ .tab_nearconten .tab_text.boder_left {
+	padding-left:10px;
+	border-left:1px solid #ccc;
+}
+ul.nav.nav-tabs li a span{
+	display:none;	
+	color: #3399ff;
+    font-weight: 500;
+    margin-bottom: 0px;
+	padding-left: 7px;
+}
+ul.nav.nav-tabs li.active a span{
+	display:inline-block;	
+}
+.main_tabs {
+    margin-top: 20px;
+}
+.tab_nearconten {
+    border-bottom: 1px solid #9e9e9e;
+    padding-bottom: 14px;
+}
+.row1 h3 {
+    font-weight: 400;
+    color: #000;
+    margin: 20px 0 28px;
+}
+.row1 p {
+    font-weight: 400;
+    color: #000;
+	margin-bottom: 1px;
+}
+.row1 a {
+    font-weight: 400;
+    color: #3399ff;
+}
+.row1 .car_rent a{
+	background:#3399ff;
+	display:inline-block;
+	padding:5px 0;
+}	
+.row1 {
+    padding:35px 0;
+    border-bottom: 1px solid #9e9e9e;
+	font-size:15px;
+}
+.row1 .car_rent a {
+    background: #3399ff;
+    display: inline-block;
+    padding: 9px 51px;
+    color: #fff;
+    font-size: 18px;
+    box-shadow: 2px 8px 13px rgba(34, 34, 34, 0.28);
+}
+
+.row1 .car_rent h3{
+	 margin: 20px 0 18px;	
+}
+.tab-content {
+    padding-bottom: 50px;
+}
+div#optn_edit .row1, div#settings .row1{
+	border: none;
+	padding: 0 0 10px;
+	margin-top:7px;
+}
+div#optn_edit  .row1 h3, div#settings .row1 h3{
+	margin: 9px 0 16px;	
+}
+div#optn_edit .table>tbody>tr>td, div#settings .table>tbody>tr>td {
+    border: none;
+	padding: 2px 0 2px 10px;
+    font-weight: 500;
+    color: #000;
+	
+}
+div#optn_edit .table>tbody>tr>td:last-child, div#settings .table>tbody>tr>td:last-child{
+	text-align:right;	
+}
+div#optn_edit .table>tbody>tr>td a, div#settings .table>tbody>tr>td a{
+	color:#3399ff;
+	font-size:16px;	
+}
+div#optn_edit .table, div#settings .table{
+	    border-left: 1px solid #eee;	
+}
+/*20-feb-2017 css start here =======================*/
+
+.row2 {
+    padding-bottom: 0;
+    border: none;
+}
+.modify {
+    text-align: right;
+    margin-top: -10px;
+}
+.modify a {
+    display: inline-block;
+    color: #3399ff;
+    font-weight: 600;
+    background: #fff;
+	padding-left:5px;
+	position:relative;
+}
+.modify a .fa {
+    margin: 0 5px;
+}
+.continue {
+    padding: 50px 0 20px;
+
+}
+.continue a {
+    background: #3399ff;
+    padding: 9px 51px;
+    color: #fff;
+    font-size: 18px;
+    box-shadow: 2px 8px 13px rgba(34, 34, 34, 0.28);
+}
+.services {
+    padding: 20px 0 10px;
+	border-bottom: 1px solid #9e9e9e;
+}
+.equipment h4, .equipment h3, .equipment p  {
+    font-weight: 400;
+    color: #000;
+}
+ .equipment p  {
+    font-weight: 400;
+    color: #3399FF;
+}
+.equipment p  {
+	margin:0;
+}
+.equipment h4 {
+    margin:0 0 50px;
+    font-weight: 500;
+}
+.equipment a {
+	text-align:center;
+    background: #3399ff;
+    padding:11px 0;
+    color: #fff;
+    font-size: 18px;
+    box-shadow: 2px 8px 13px rgba(34, 34, 34, 0.28);
+    display: inline-block;
+	width:173.56px;
+	margin-top: 50px;
+}
+.extended {
+    padding-top: 40px;
+}
+.info_div{
+	max-width:700px;
+	margin:0 auto;	
+}
+.form_div{
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	    padding: 20px 0;
+}
+.ur_info {
+    color: #3399ff;
+    font-weight: 400;
+}
+.input_div input, .input_div select{
+    width: 100%;
+	background: #f5f5f5;
+	border: 1px solid #ccc;
+	margin-bottom: 15px;
+	height: 25px;
+}
+.input_div select {
+    color: #000;
+    font-weight: 400;
+}
+.ur_info2{
+	margin:0 0 15px;
+}
+.label_div label {
+    font-size: 13px;
+}
+.payment {
+    margin-top: 5px;
+    border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+    padding: 15px 0 0;
+}
+.payment h3 {
+    color: #000;
+	    margin-bottom: 30px;
+}
+.term_div a {
+    font-weight: 500;
+    font-size: 15px;
+    color: #3399FF;
+}
+.term_div h3 {
+    margin: 20px 0;
+}
+.resevre a{
+	margin-top: 20px;
+}
+
+/*20-feb-2017 css end here =======================*/
+
+/*21-feb-2017 css start here =======================*/
+.bdr_top {
+    border-top: 1px solid #ccc;
+    margin: 20px 0 0;
+}
+.bdr_right{
+	border-right: 1px solid #ccc;
+}
+.tbl{
+	border-left: none !important;
+}
+.tab_text3 h5{
+	color:#000;
+}
+.car_head {
+    font-weight: 600;
+	margin: 0 0 15px;
+}
+.modity_a{
+	display: inline-block;
+    color: #3399ff;
+    font-weight: 600;
+    background: #fff;
+    padding-left: 5px;
+	font-size: 16px;
+}
+.modity_a .fa{
+	margin: 0 5px;
+}
+.return_div {
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+}
+.row_margin{
+	padding:0 15px;
+}
+.row_margin .row .col-sm-4.col-xs-4{
+	padding:0;
+}
+.car_cls {
+    padding-top: 15px;
+}
+.car_cls h4 {
+    margin:0;
+}
+.car_cls p {
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 5px 0;
+}
+.car_cls h5 {
+    margin: 0;
+    font-weight: 500;
+}
+.tbl_div {
+    border-top: 1px solid #a0a0a0;
+    border-bottom: 1px solid #a0a0a0;
+    margin-top: 15px;
+    padding: 20px 0;
+}
+.tbl_div table{
+	width:100%;
+}
+.tbl_hd {
+    font-weight: 600;
+    margin-top: 0;
+}
+.rate_hd {
+    padding: 15px 0;
+}
+.rate_hd h4 {
+    margin: 0;
+}
+.rate_hd h6 {
+    margin: 5px 0 10px;
+    font-weight: 500;
+    font-size: 15px;
+	    color: #000;
+}
+.rate_hd p {
+    font-weight: 500;
+    color: #383737;
+}
+table.table.tbl tbody tr td p {
+    font-weight: normal;
+    color: #666;
+    font-size: 13px;
+    padding-left: 10px;
+}
+.fee_tax{
+	font-weight: normal;
+    color: #666;
+    padding-left: 10px;
+}
+table.table.tbl tbody tr td table {
+	width:100%;
+}
+
+.continue_btn{
+	padding:15px 0 0;
+	border: none;
+	display: block;
+    margin-bottom: 15px;
+}
+/*21-feb-2017 css end here =======================*/
+
+
+/*22-feb-2017 css start here =======================*/
+
+.term_div a:hover{
+color: #3399ff;
+}
+/*22-feb-2017 css end here =======================*/
+
+
+
+
+/*23-feb-2017 css start here =======================*/
+.tab-content>.active {
+    display: block;
+    position: relative;
+}
+.detail_popup {
+   
+    background: #fff;
+	display: none;
+}
+.detail_popup.show{
+	display:block;
+}
+
+.tab-nearcontent{
+position:relative;
+}
+
+.content-information{
+
+background:#fff;
+display:none;
+}
+.content-information.show{
+	display:block;
+}
+
+/*23-feb-2017 css end here =======================*/
+
+
+
+
+
+
+/*===============1st march css start here==============*/
+.tab_text_modify {
+border-bottom:1px solid #e0e0e0;
+margin-bottom: 14px;
+}
+.tab_text_modify a span{
+padding:0px 8px;
+}
+.modify_below{
+border-bottom:1px solid #e0e0e0;
+padding-bottom: 26px;
+}
+/*a.modify_1 {
+    margin-top:20px;
+    float: right;
+	background:#fff;
+	padding-left:8px;
+	font-weight: 400;
+    color: #3399ff;
+}*/
+a.modify_11 {
+    margin-top: 15px;
+    float: right;
+    background: #fff;
+    padding-left: 8px;
+    font-weight: 600;
+    color: #3399ff;
+}
+a.modify_11 span {
+   padding:0px 8px;
+}
+.tab_text_modify h5{
+color: #3399ff;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.tab_text_modify p{
+ margin: 5px 0;
+    font-size: 14px;
+}
+.tab_text_modify time{
+	padding-bottom: 10px !important;
+    display: inline-block;
+	font-size: 16px;
+    font-weight: 500;
+}
+
+
+.modify12 {
+    text-align: right;
+    border-top: 1px solid #e0e0e0;
+    max-width: 88%;
+    margin: 0 auto;
+    margin-right: 0px;
+}
+.modify12 {
+	position: relative;
+}
+.icon-modify a{
+	color: #3399ff;
+    font-weight: 600;
+	display:inline-block;
+	background:#fff;
+	padding-left:8px;
+}
+.icon-modify {
+    
+    position: absolute;
+    left: 0;
+    right: 0px;
+    top: -10px;
+    display: inline-block;
+    
+}
+.modal.fade.bs-example-modal-md.box-farm.in {
+    z-index: 99999;
+}
+.modal.fade.bs-example-modal-md2.box-farm.in {
+    z-index: 99999;
+}
+.modal.fade.bs-example-modal-md3.box-farm.in {
+    z-index: 99999;
+}
+.form-control22{
+  }
+.up-date {
+color:#000;
+text-align:center;
+padding:20px 0px;
+}
+.up-date button {
+    padding: 8px 67px;
+    border: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+	background: #3399ff;
+    box-shadow: 2px 8px 13px rgba(34, 34, 34, 0.28);
+	
+}
+
+.up-date  p{
+padding: 13px;
+    font-size: 16px;
+}
+.up-date input.form-control {
+    background: #eeeeee;
+    height: 60px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 17px;
+    font-weight: normal;
+}
+.up-date .input-group-addon {
+  border:none;  
+}
+.up-date div#datetimepicker2 {
+    padding: 0px 20px 17px 20px;
+}
+.up-date button.up-date{
+margin-top:20px;
+}
+
+.loader{
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+width:100%;
+background: rgba(255, 255, 255, 0.91);
+z-index:99999999;
+
+display:none;
+}
+.page-loader{
+width:100%;
+text-align:center;
+}
+.pageload{
+display:block;
+}
+.inner_loader{
+display:flex;
+align-items:center !important;
+}
+.page-loader img{
+width:80px;
+height:80px;
+}
+.inner_loader {
+    display: flex;
+    align-items: center !important;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    right: 0px;
+    width: 100%;
+	
+}
+.page-loader {
+    width: 100%;
+    text-align: center;
+}
+/*===============1st march css end here==============*/
+
+
+/*===============2st march css start here==============*/
+.modify-0ne {
+    position: relative;
+	padding-top: 10px;
+}
+.modi_fy {
+    position: absolute;
+    right: 0;
+    top: -1px;
+}
+.modi_fy a{
+	background: #fff;
+    padding-left: 8px;
+    font-weight: 600;
+    color: #3399ff;
+}
+.car_img11 img{
+max-width:60%;
+}
+.car_img.car_img11 {
+    text-align: left;
+}
+.responaive_ness{
+padding-left:70px;
+padding-top:20px;
+padding-bottom:5px;
+}
+/*===============2st march css end here==============*/
+
+
+/*===============6st march css end here==============*/
+input.rate-box {
+    margin-right: 11px;
+    padding: 7px !important;
+    width: 17px;
+    height: 17px;
+    vertical-align: sub;
+}
+/*===============2st march css end here==============*/
+
+
+
+
+
+@media (max-width:972px){
+.tab_text_modify time {
+    padding-bottom: 10px !important;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+}
+div#optn_edit .row1 h3, div#settings .row1 h3 {
+    margin: 4px 0 16px;
+    font-size: 15px;
+}
+}
+
+
+@media (max-width:768px){
+
+.modify12 {
+    text-align: right;
+    border-top: 1px solid #e0e0e0;
+    max-width: 81%;
+    margin: 0 auto;
+    margin-right: 0px;
+}
+}
+
+@media (max-width:767px){
+	section.sign_upform{
+		position:static;
+		padding-bottom: 90px;	
+	}
+	.row1 {
+    max-width: 100%;
+}
+	.modify12 {
+    max-width: 100%;
+}
+	.signup_form {
+		max-width: 550px;
+		margin: 0 auto;
+		padding: 15px;
+	}
+	.responaive_ness {
+    border: none;
+	}
+	#header {
+    padding: 10px 0;}
+	a.logo {
+		max-width: 166px;
+	}
+	nav.navbar.navbar-default ul.nav.navbar-nav.navbar-right li a, .link_right a {
+		padding: 16px 0;
+	}
+	.sign_upform h1 {
+		font-weight: 400;
+		padding: 40px 0;
+		font-size: 20px;
+	}
+	.tab_nearconten .tab_text.boder_left {
+		border-left: none;
+}
+	/* 20-feb ================*/
+	
+	.equipment a, .continue a{
+		width:131.17px;
+		font-size: 14px;
+		padding: 9px 0;
+		text-align: center
+	}
+	.extended {
+		padding-top: 0;
+	}
+	.extended h4 {
+		display: none;
+	}
+	.equipment h3 {
+		font-size: 20px;
+	}
+	.continue {
+		padding: 30px 0 20px;
+	}
+	
+	.responaive_ness{
+	padding-right:14px;
+	padding-left:0px;
+	}
+	
+}
+
+
+
+
+
+@media (max-width:500px){
+	.form_div .row .col-xs-3, .form_div .row .col-xs-9{
+		width:100%;
+	}
+	.input_div input, .input_div select{
+		margin-bottom:10px;
+	}
+	.car_cls p {
+		font-size: 16px;
+	}
+	
+/* 21-feb media start here================*/
+	ul.nav.nav-tabs li {
+		width: 50%;
+}
+	ul.nav.nav-tabs {
+		display: block;
+}
+}
+
+/* 21-feb media end here================*/
+
+.footer {height:40px;line-height:40px;color:#fff;width:100%;padding:0 30px;background:#3399FF}
+    .footer a {color:#fff}
+    .footer a:hover {color:#222}

@@ -1,0 +1,58 @@
+﻿/*//////////////////////////////////////////////////////////////////////////////////////////*/
+/* COLOR CSS 2*/
+/*//////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+a,
+.color-primary,
+.text-primary,
+.list-mark-1 li:before,
+.list-mark-2 li:before,
+.list-mark-3 li:before,
+.blockquote-1:before,
+.pager li > a:hover,
+.pager li > a:hover .icon,
+.accordion .btn-collapse.collapsed .icon:before,
+.btn-w-ic .icon,
+.btn-link .icon,
+.copyright__link:hover,
+.b-advantages-1:hover .b-advantages-1__icon,
+.b-contacts-2__icon,
+.b-progress-list_mod-b .b-progress-list__percent,
+.widget-list__link:hover,
+.widget-list__item:hover:before,
+.b-banners-1_mod-a .btn .icon,
+.widget-searce .form-sidebar__emphasis,
+.b-post-full .post-tags__icon,
+.b-contacts-3__title,
+.b-pricing__icon .icon,
+.navbar .navbar-nav > li > a:hover,
+[off-canvas] li:hover a,
+.footer-list .footer-list__link:hover,
+.footer-list .footer-list__item:hover:before {color: #650303;}
+
+
+
+input.form-control[type="submit"] {background-color:#650303 !important}
+.row1 .car_rent a {background-color:#650303 !important;color:#fff !important}
+.row1 a {color:#650303 !important}
+.tab_text h5 {color:#650303 !important}
+ul.nav.nav-tabs li a span {color:#650303 !important}
+
+
+.main_tabs li.active a, .main_tabs li a:hover, .main_tabs li.active a:hover, .main_tabs li a:focus, .main_tabs li.active a:focus {
+border-bottom:2px solid #650303 !important;color:#650303 !important
+}
+.icon-modify a,.modi_fy a,div#optn_edit .table>tbody>tr>td a, div#settings .table>tbody>tr>td a,.tab_text_modify h5, .equipment p ,front-detail2,.modify a,.term_div a,.color  {color:#650303 !important}
+
+.equipment a,.footer{background:#650303 !important}
+.up-date button,.continue a {background:#650303 !important;color:#fff !important}
+
+
+
+
+
+
+
+
+

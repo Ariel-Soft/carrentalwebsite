@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign Up page</title>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/datepicker.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+    <link href="css/switcher.css" rel="stylesheet">
+    <link href="css/colorRed.css" rel="alternate stylesheet" title="colorRed" />
+    <link href="css/colorgreen.css" rel="alternate stylesheet" title="colorgreen" />
+    <link href="css/colorpink.css" rel="alternate stylesheet" title="colorpink" />
+    <link href="css/colororange.css" rel="alternate stylesheet" title="colororange" />
+    <link href="css/colordarkblue.css" rel="alternate stylesheet" title="colordarkblue" />
+    <link href="css/colordarkred.css" rel="alternate stylesheet" title="colordarkred" />
+</head>
+
+<body>
+    <div data-header="sticky" data-header-top="200" class="l-theme animated-css">
+        <!-- Start Switcher-->
+        <div class="switcher-wrapper">
+            <div class="demo_changer" style="left:-72px !important">
+                <div class="demo-icon color-primary"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+                <div class="form_holder">
+                    <div class="predefined_styles">
+                        <div class="skin-theme-switcher">
+                            <h4>Color</h4>
+                            <a href="javascript:void(0);" data-switchcolor="color1" style="background-color:#3399FF;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colorRed" style="background-color:#D4002A;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colorgreen" style="background-color:#28af0f;" class="styleswitch"></a>
+
+                            <a href="javascript:void(0);" data-switchcolor="colorpink" style="background-color:#a5529f;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colororange" style="background-color:#eb9d07;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colordarkblue" style="background-color:#003259;" class="styleswitch"></a>
+                            <a href="javascript:void(0);" data-switchcolor="colordarkred" style="background-color:#650303;" class="styleswitch"></a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <section class="sign_upform">
+            <div class="container">
+                <div class="sign_upform">
+                    <h1 class="text-center"> Reserve your vehicle now </h1>
+                    <div class="signup_form">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label> Pickup Time</label>
+                                        <div class='input-group date' id='datetimepicker2'>
+                                            <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i> </span>
+                                            <input type='text' class="form-control" placeholder="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label> Return Time</label>
+                                        <div class='input-group date' id='datetimepicker2'>
+                                            <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i> </span>
+                                            <input type='text' class="form-control" placeholder="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-5">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <label> Pickup and Return</label>
+                                        <div class='input-group'>
+                                            <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+                                            <input type="text" class="form-control" placeholder="" list="address_field" name="address_field" />
+                                            <datalist id="address_field">
+                                                <option value="Internet Explorer">
+                                                <option value="Firefox">
+                                                <option value="Chrome">
+                                                <option value="Opera">
+                                                <option value="Safari">
+                                            </datalist>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label> &nbsp;</label>
+                                        <input type='submit' class="form-control" onclick="location.href = 'selectVehicle.html';" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+        <script src='js/bootstrap.min.js'></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/dmss.js"></script>
+        <!--<script src="js/custom.js"></script> -->
+        <script>
+
+            $(document).ready(function () {
+                $(function () {
+                    $('#datetimepicker2, #datetimepicker2').datetimepicker({
+                        locale: 'en'
+                    });
+                });
+
+            });
+        </script>
+</body>
+</html>
